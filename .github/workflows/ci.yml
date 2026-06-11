@@ -75,6 +75,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Backup + build + deploy on contabo-damu
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+        if: ${{ env.DEPLOY_HOST != '' }}   # skip (green) until deploy secrets are set
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.DEPLOY_HOST }}

@@ -10,6 +10,16 @@ TEST_DB = os.getenv("TEST_DATABASE_URL")
 requires_db = pytest.mark.skipif(not TEST_DB, reason="requires TEST_DATABASE_URL")
 
 
+@pytest.fixture(autouse=True)
+def _force_sheets_sync_enabled(monkeypatch):
+    """Tests mock the gspread layer, so the sync flag must be ON regardless of
+    env. CI sets SHEETS_SYNC_ENABLED=false (no real Google calls); without this,
+    sync_submission/reconcile_once early-return and the sync assertions fail."""
+    from app.config import settings
+
+    monkeypatch.setattr(settings, "sheets_sync_enabled", True)
+
+
 @pytest_asyncio.fixture
 async def engine():
     if not TEST_DB:

@@ -4,7 +4,7 @@ from __future__ import annotations
 import uuid
 from datetime import datetime
 
-from sqlalchemy import Boolean, DateTime, Integer, String, Text, func, text
+from sqlalchemy import Boolean, DateTime, Index, Integer, String, Text, func, text
 from sqlalchemy.dialects.postgresql import INET, JSONB, UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
@@ -15,6 +15,13 @@ class Base(DeclarativeBase):
 
 class Submission(Base):
     __tablename__ = "submissions"
+    # Declared on the model so create_all (tests) matches the Alembic migration
+    # (prod). The unique dedupe_key index is required by crud's ON CONFLICT.
+    __table_args__ = (
+        Index("ix_submissions_unsynced", "created_at", postgresql_where=text("synced = false")),
+        Index("ix_submissions_form_type", "form_type", text("created_at DESC")),
+        Index("ux_submissions_dedupe", "dedupe_key", unique=True),
+    )
 
     id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), primary_key=True, server_default=func.gen_random_uuid()
