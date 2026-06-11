@@ -1,0 +1,46 @@
+name: trueline-publisher
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE: /api
+    restart: unless-stopped
+    mem_limit: 256m
+    ports:
+      - "127.0.0.1:8111:80"
+    depends_on:
+      - api
+
+  api:
+    build: ./backend
+    restart: unless-stopped
+    mem_limit: 512m
+    env_file: ./backend/.env
+    volumes:
+      # service-account JSON lives on the host, mounted read-only (never in the image)
+      - ./backend/secrets:/run/secrets:ro
+    ports:
+      - "127.0.0.1:8101:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    mem_limit: 512m
+    env_file: ./backend/.env  # provides POSTGRES_USER / POSTGRES_PASSWORD / POSTGRES_DB
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5446:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:

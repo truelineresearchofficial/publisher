@@ -1,0 +1,25 @@
+# secrets / env
+**/.env
+**/.env.*
+!**/.env.example
+backend/secrets/*
+!backend/secrets/.gitkeep
+*.pem
+*.key
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.venv/
+*.egg-info/
+
+# node / build artifacts
+node_modules/
+frontend/dist/
+coverage/
+*.tsbuildinfo
+
+# misc
+.DS_Store

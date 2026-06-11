@@ -1,0 +1,111 @@
+name: ci-cd
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql+asyncpg://test:test@localhost:5432/test
+      TEST_DATABASE_URL: postgresql+asyncpg://test:test@localhost:5432/test
+      SHEETS_SYNC_ENABLED: "false"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+      - name: Lint
+        run: ruff check .
+      - name: Validate migrations
+        run: alembic upgrade head
+      - name: Tests (unit + integration)
+        run: pytest -q
+
+  frontend-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Unit tests
+        run: npm run test
+      - name: Production build
+        run: npm run build
+        env:
+          VITE_API_BASE: /api
+
+  deploy:
+    needs: [backend-test, frontend-build]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Backup + build + deploy on contabo-damu
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_SSH_PORT || 22 }}
+          script: |
+            set -euo pipefail
+            cd /var/www/tools/trueline-publisher
+            BK=/var/backups/trueline-publisher
+            TS=$(date +%Y%m%d-%H%M%S)
+            mkdir -p "$BK"
+
+            # --- pre-deploy guard: need headroom to build on the box ---
+            FREE_MB=$(free -m | awk '/^Mem:/{print $7}')
+            if [ "${FREE_MB:-0}" -lt 1500 ]; then
+              echo "Aborting: only ${FREE_MB}MB available RAM (<1500)"; exit 1
+            fi
+
+            # --- BACKUP FIRST (every deploy, before any mutation) ---
+            docker compose exec -T db sh -c 'pg_dump -U "$POSTGRES_USER" -Fc -Z6 "$POSTGRES_DB"' \
+              > "$BK/db-$TS.dump" || echo "WARN: db dump skipped (first deploy / db down)"
+            git rev-parse HEAD > "$BK/code-$TS.sha"
+            tar czf "$BK/code-$TS.tgz" --exclude=.git --exclude=node_modules --exclude=dist .
+            ls -t "$BK"/db-*.dump  2>/dev/null | tail -n +11 | xargs -r rm
+            ls -t "$BK"/code-*.tgz 2>/dev/null | tail -n +11 | xargs -r rm
+
+            # --- DEPLOY ---
+            git pull --ff-only
+            docker tag trueline-publisher-api:latest trueline-publisher-api:rollback 2>/dev/null || true
+            docker compose build api frontend
+            docker compose run --rm api alembic upgrade head
+            docker compose up -d --no-deps api frontend
+            docker image prune -f

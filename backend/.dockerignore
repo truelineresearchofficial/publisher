@@ -1,0 +1,11 @@
+.env
+.env.*
+secrets/
+*.json
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+tests/
+.git/

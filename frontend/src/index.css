@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv01', 'cv11';
+  }
+
+  ::selection {
+    background: #0e8c7f;
+    color: #fff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tighter;
+    font-optical-sizing: auto;
+  }
+
+  /* Slimmer, refined scrollbar */
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c8d6d6;
+    border: 3px solid #fff;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #9fb6b6;
+  }
+}
+
+@layer components {
+  .container-tl {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-10;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-600;
+  }
+
+  /* Big editorial display headline */
+  .display {
+    @apply font-display font-medium tracking-tightest text-ink;
+    line-height: 0.98;
+  }
+
+  /* Spectrum gradient text */
+  .text-spectrum {
+    background: linear-gradient(100deg, #0e8c7f 0%, #14a99a 30%, #22c3c9 60%, #3e9be8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s var(--ease-out);
+  }
+  .link-underline:hover {
+    background-size: 100% 1.5px;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full text-sm font-semibold transition-all duration-300 ease-out;
+  }
+  .btn-primary {
+    @apply btn bg-ink px-6 py-3 text-white shadow-card hover:shadow-card-lg;
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+  }
+  .btn-brand {
+    @apply btn bg-brand-500 px-6 py-3 text-white;
+    box-shadow: 0 14px 34px -14px rgba(14, 140, 127, 0.7);
+  }
+  .btn-brand:hover {
+    @apply bg-brand-600;
+    transform: translateY(-1px);
+  }
+  .btn-ghost {
+    @apply btn border border-line-2 bg-white px-6 py-3 text-ink hover:border-ink/40 hover:bg-canvas;
+  }
+
+  .card {
+    @apply rounded-3xl border border-line bg-white shadow-card;
+  }
+
+  /* Trust badge — the legitimacy signal pill used site-wide */
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1.5 text-[12.5px] font-medium text-ink-soft;
+  }
+
+  /* Policy / scholarly prose */
+  .prose-tl {
+    @apply text-[15.5px] leading-relaxed text-ink-soft;
+  }
+  .prose-tl p {
+    @apply mb-4;
+  }
+  .prose-tl strong {
+    @apply font-semibold text-ink;
+  }
+
+  /* Faint dotted/grid science texture */
+  .bg-grid {
+    background-image: radial-gradient(circle, rgba(10, 26, 38, 0.05) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+  .bg-grid-fine {
+    background-image: linear-gradient(rgba(10, 26, 38, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(10, 26, 38, 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .mask-fade-r {
+    -webkit-mask-image: linear-gradient(90deg, #000 70%, transparent);
+    mask-image: linear-gradient(90deg, #000 70%, transparent);
+  }
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+}
