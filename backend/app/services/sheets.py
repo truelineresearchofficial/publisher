@@ -154,12 +154,29 @@ MANIFEST: dict[str, tuple[str, list[str], callable]] = {
 _spreadsheet = None
 
 
+_SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+
+
 def _get_spreadsheet():
     global _spreadsheet
     if _spreadsheet is None:
+        import json
+
         import gspread  # imported lazily so unit tests need no creds
 
-        client = gspread.service_account(filename=settings.google_sa_json_path)
+        with open(settings.google_sa_json_path) as f:
+            info = json.load(f)
+
+        if info.get("type") == "service_account":
+            client = gspread.service_account(filename=settings.google_sa_json_path)
+        else:
+            # OAuth authorized-user token (client_id + client_secret + refresh_token);
+            # google-auth refreshes the access token automatically.
+            from google.oauth2.credentials import Credentials
+
+            creds = Credentials.from_authorized_user_info(info, scopes=_SCOPES)
+            client = gspread.authorize(creds)
+
         _spreadsheet = client.open_by_key(settings.sheets_doc_id)
     return _spreadsheet
 
