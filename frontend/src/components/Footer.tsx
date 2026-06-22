@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, Mail, MapPin } from 'lucide-react'
+import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react'
 import { Wordmark } from './Marks'
 import { BRAND, FOOTER_COLS, JOURNAL } from '../lib/content'
 
@@ -15,12 +15,23 @@ export default function Footer() {
               peer review, ethics and indexing transparency first.
             </p>
             <div className="mt-6 space-y-2.5 text-sm text-white/55">
-              <p className="flex items-center gap-2.5">
-                <MapPin className="h-4 w-4 text-brand-300" /> {BRAND.hq}
-              </p>
+              <div className="flex items-start gap-2.5">
+                <MapPin className="mt-1 h-4 w-4 shrink-0 text-brand-300" /> 
+                <span className="max-w-[260px] leading-relaxed">{BRAND.hq}</span>
+              </div>
               <a href={`mailto:${BRAND.email}`} className="flex items-center gap-2.5 hover:text-white">
-                <Mail className="h-4 w-4 text-brand-300" /> {BRAND.email}
+                <Mail className="h-4 w-4 shrink-0 text-brand-300" /> {BRAND.email}
               </a>
+              {BRAND.phone1 && (
+                <a href={`tel:${BRAND.phone1.replace(/\D/g,'')}`} className="flex items-center gap-2.5 hover:text-white">
+                  <Phone className="h-4 w-4 shrink-0 text-brand-300" /> {BRAND.phone1}
+                </a>
+              )}
+              {BRAND.phone2 && (
+                <a href={`tel:${BRAND.phone2.replace(/\D/g,'')}`} className="flex items-center gap-2.5 hover:text-white">
+                  <Phone className="h-4 w-4 shrink-0 text-brand-300" /> {BRAND.phone2}
+                </a>
+              )}
             </div>
           </div>
 

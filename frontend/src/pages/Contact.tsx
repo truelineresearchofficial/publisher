@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
 import { useLocation } from 'react-router-dom'
-import { ArrowRight, CheckCircle2, Mail, MapPin, FileText, MessageSquare, Building2 } from 'lucide-react'
+import { ArrowRight, CheckCircle2, Mail, MapPin, FileText, MessageSquare, Building2, Phone } from 'lucide-react'
 import { Container, Reveal } from '../lib/ui'
 import { CONTACT_FORMS, OFFICES, BRAND } from '../lib/content'
 import { submitForm, SubmitError } from '../lib/submit'
@@ -114,12 +114,22 @@ export default function Contact() {
                   {OFFICES.map((o) => (
                     <p key={o.city} className="flex items-start gap-2.5">
                       <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
-                      <span><strong className="font-semibold text-ink">{o.city}</strong> — {o.detail}</span>
+                      <span><strong className="font-semibold text-ink">{o.city}</strong><br/><span className="inline-block mt-0.5 leading-relaxed">{o.detail}</span></span>
                     </p>
                   ))}
                   <a href={`mailto:${BRAND.email}`} className="flex items-center gap-2.5 hover:text-brand-600">
-                    <Mail className="h-4 w-4 text-brand-500" /> {BRAND.email}
+                    <Mail className="h-4 w-4 shrink-0 text-brand-500" /> {BRAND.email}
                   </a>
+                  {BRAND.phone1 && (
+                    <a href={`tel:${BRAND.phone1.replace(/\D/g,'')}`} className="flex items-center gap-2.5 hover:text-brand-600">
+                      <Phone className="h-4 w-4 shrink-0 text-brand-500" /> {BRAND.phone1}
+                    </a>
+                  )}
+                  {BRAND.phone2 && (
+                    <a href={`tel:${BRAND.phone2.replace(/\D/g,'')}`} className="flex items-center gap-2.5 hover:text-brand-600">
+                      <Phone className="h-4 w-4 shrink-0 text-brand-500" /> {BRAND.phone2}
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

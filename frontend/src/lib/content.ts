@@ -20,10 +20,12 @@ export const BRAND = {
   // Tagline option chosen from the blueprint:
   tagline: 'Integrity-first publishing for life sciences.',
   promise: 'Where biomedical research is published, indexed, and read.',
-  hq: 'Vaikuntham · Salem, Tamil Nadu, India',
+  hq: 'Building No. 7/232-19, Devi Towers, Kalipatti Privu Road, Vaikuntham, Sankari, Salem, Tamil Nadu - 637103',
   group: 'Part of the Trueline Group',
-  email: 'editorial@truelinepublishers.com',
+  email: 'truelineresearchteam@gmail.com',
   servicesEmail: 'services@truelinepublishers.com',
+  phone1: 'TN : +91 95788 73584',
+  phone2: 'KL : +91 80564 17009',
 }
 
 // The flagship journal. NOTE (carried from group strategy): the legacy "JAEID"
@@ -646,7 +648,6 @@ export const CONTACT_FORMS = [
 ]
 
 export const OFFICES = [
-  { city: 'Salem (HQ)', detail: 'Vaikuntham, Salem — Tamil Nadu, India' },
-  { city: 'Editorial office', detail: 'editorial@truelinepublishers.com' },
+  { city: 'Salem (HQ)', detail: 'Building No. 7/232-19, Devi Towers, Kalipatti Privu Road, Vaikuntham, Sankari, Salem, Tamil Nadu - 637103' },
   { city: 'Gulf desk', detail: 'GCC institutional partnerships' },
 ]

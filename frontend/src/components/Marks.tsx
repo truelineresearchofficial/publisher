@@ -30,25 +30,11 @@ export function Logomark({ className = 'h-9 w-9', dark = false }: { className?: 
 
 export function Wordmark({ className = '', tone = 'ink' }: { className?: string; tone?: 'ink' | 'white' }) {
   return (
-    <span className={`flex items-center gap-2.5 ${className}`}>
-      <Logomark className="h-9 w-9" dark={tone === 'white'} />
-      <span className="flex flex-col leading-none">
-        <span
-          className={`font-display text-[1.18rem] font-semibold tracking-tight ${
-            tone === 'white' ? 'text-white' : 'text-ink'
-          }`}
-        >
-          Trueline
-        </span>
-        <span
-          className={`text-[0.62rem] font-semibold uppercase tracking-[0.30em] ${
-            tone === 'white' ? 'text-white/55' : 'text-ink-faint'
-          }`}
-        >
-          Publishers
-        </span>
-      </span>
-    </span>
+    <img 
+      src="/logo.png" 
+      alt="Trueline Publisher" 
+      className={`h-12 w-auto object-contain ${className} ${tone === 'white' ? 'brightness-0 invert opacity-90' : ''}`}
+    />
   )
 }
 
