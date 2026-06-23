@@ -108,3 +108,15 @@ async def on_unhandled(request: Request, exc: Exception):
 # ---- routes --------------------------------------------------------------
 app.include_router(health.router, prefix="/api")
 app.include_router(submissions.router, prefix="/api/v1")
+
+
+@app.get("/", include_in_schema=False)
+async def root() -> dict:
+    """Small landing at the site root linking to docs and health.
+
+    Hidden from OpenAPI (`include_in_schema=False`) to keep the spec tidy.
+    """
+    return {
+        "status": "ok",
+        "links": {"docs": "/docs", "redoc": "/redoc", "health": "/api/health"},
+    }
