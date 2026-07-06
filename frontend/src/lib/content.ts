@@ -26,6 +26,8 @@ export const BRAND = {
   servicesEmail: 'services@truelinepublishers.com',
   phone1: 'TN : +91 95788 73584',
   phone2: 'KL : +91 80564 17009',
+  website: 'truelineresearch.in',
+  hours: 'Monday – Saturday | 9:30 AM – 6:30 PM',
 }
 
 // The flagship journal. NOTE (carried from group strategy): the legacy "JAEID"
@@ -649,5 +651,7 @@ export const CONTACT_FORMS = [
 
 export const OFFICES = [
   { city: 'Salem (HQ)', detail: 'Building No. 7/232-19, Devi Towers, Kalipatti Privu Road, Vaikuntham, Sankari, Salem, Tamil Nadu - 637103' },
+  { city: 'Branch Office – Salem', detail: 'Co-Working Space, 2nd Floor, Sona Incubation Foundation, Sona College of Technology, Salem – 636005, Tamil Nadu, India' },
+  { city: 'Branch Office – Ernakulam', detail: 'Building No: 37/882, Opp. Municipal Town Hall, Thirunilath Housing Colony, South Kalamassery, Ernakulam – 682039, Kerala, India (Landmark: Cake Hut Shop)' },
   { city: 'Gulf desk', detail: 'GCC institutional partnerships' },
 ]

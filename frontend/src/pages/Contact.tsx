@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
 import { useLocation } from 'react-router-dom'
-import { ArrowRight, CheckCircle2, Mail, MapPin, FileText, MessageSquare, Building2, Phone } from 'lucide-react'
+import { ArrowRight, CheckCircle2, Mail, MapPin, FileText, MessageSquare, Building2, Phone, Globe, Clock } from 'lucide-react'
 import { Container, Reveal } from '../lib/ui'
 import { CONTACT_FORMS, OFFICES, BRAND } from '../lib/content'
 import { submitForm, SubmitError } from '../lib/submit'
@@ -129,6 +129,16 @@ export default function Contact() {
                     <a href={`tel:${BRAND.phone2.replace(/\D/g,'')}`} className="flex items-center gap-2.5 hover:text-brand-600">
                       <Phone className="h-4 w-4 shrink-0 text-brand-500" /> {BRAND.phone2}
                     </a>
+                  )}
+                  {BRAND.website && (
+                    <a href={`https://${BRAND.website}`} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 hover:text-brand-600">
+                      <Globe className="h-4 w-4 shrink-0 text-brand-500" /> {BRAND.website}
+                    </a>
+                  )}
+                  {BRAND.hours && (
+                    <p className="flex items-start gap-2.5">
+                      <Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" /> {BRAND.hours}
+                    </p>
                   )}
                 </div>
               </div>
