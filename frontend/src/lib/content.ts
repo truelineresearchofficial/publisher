@@ -22,11 +22,11 @@ export const BRAND = {
   promise: 'Where biomedical research is published, indexed, and read.',
   hq: 'Building No. 7/232-19, Devi Towers, Kalipatti Privu Road, Vaikuntham, Sankari, Salem, Tamil Nadu - 637103',
   group: 'Part of the Trueline Group',
-  email: 'truelineresearchteam@gmail.com',
+  email: 'info@truelinepublisher.in',
   servicesEmail: 'services@truelinepublishers.com',
   phone1: 'TN : +91 95788 73584',
   phone2: 'KL : +91 80564 17009',
-  website: 'truelineresearch.in',
+  website: 'truelinepublisher.in',
   hours: 'Monday – Saturday | 9:30 AM – 6:30 PM',
 }
 
@@ -194,6 +194,10 @@ export const NAV: NavItem[] = [
   {
     label: 'Resources',
     to: '/resources',
+  },
+  {
+    label: 'Contact',
+    to: '/contact',
   },
 ]
 
