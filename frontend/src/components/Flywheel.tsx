@@ -2,15 +2,17 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { GROUP } from '../lib/content'
 
-// The Trueline Group flywheel, seen from the Publishers' seat: Research
-// generates the output, Publishers credentializes it, StartNet turns events
-// into proceedings — all compounding a shared core of credibility, indexing
-// and reputation. Publishers (node 1) is highlighted by default.
+// The Trueline Group ecosystem, seen from the Publishers' seat: Research
+// generates the output, Publishers credentializes it, the Journal publishes it,
+// Spectrum amplifies it, and StartNet drives innovation — all compounding a
+// shared Trueline Group core. Publishers (node 1) is highlighted by default.
 
 const NODES = [
   { ...GROUP[0], angle: -90, color: '#3E9BE8' },
-  { ...GROUP[1], angle: 30, color: '#0E8C7F' },
-  { ...GROUP[2], angle: 150, color: '#22C3C9' },
+  { ...GROUP[1], angle: -18, color: '#0E8C7F' },
+  { ...GROUP[2], angle: 54, color: '#22C3C9' },
+  { ...GROUP[3], angle: 126, color: '#2FB0A0' },
+  { ...GROUP[4], angle: 198, color: '#5AA9E6' },
 ]
 
 const R = 132
@@ -54,7 +56,7 @@ export default function Flywheel() {
           {/* connecting curved arrows between nodes */}
           {NODES.map((n, i) => {
             const a = pos(n.angle)
-            const b = pos(NODES[(i + 1) % 3].angle)
+            const b = pos(NODES[(i + 1) % NODES.length].angle)
             return (
               <path
                 key={i}
@@ -69,11 +71,14 @@ export default function Flywheel() {
 
           {/* core */}
           <circle cx={C} cy={C} r="48" fill="#0A1A26" />
-          <text x={C} y={C - 6} textAnchor="middle" className="fill-white" style={{ fontSize: 11.5, fontWeight: 600 }}>
-            CREDIBILITY
+          <text x={C} y={C - 12} textAnchor="middle" className="fill-white" style={{ fontSize: 11, fontWeight: 600 }}>
+            TRUELINE
           </text>
-          <text x={C} y={C + 11} textAnchor="middle" className="fill-white/60" style={{ fontSize: 9.5 }}>
-            INDEXING · TRUST
+          <text x={C} y={C} textAnchor="middle" className="fill-white" style={{ fontSize: 11, fontWeight: 600 }}>
+            GROUP
+          </text>
+          <text x={C} y={C + 15} textAnchor="middle" className="fill-white/60" style={{ fontSize: 5.5 }}>
+            Research • Publishing • Innovation
           </text>
 
           {/* nodes */}
@@ -107,7 +112,7 @@ export default function Flywheel() {
                   {n.name.replace('Trueline ', '')}
                 </text>
                 <text x={p.x} y={p.y + 18} textAnchor="middle" className="fill-ink-faint" style={{ fontSize: 8 }}>
-                  {n.role.split(' ')[0]}
+                  {n.short}
                 </text>
               </g>
             )

@@ -73,7 +73,7 @@ export function SectionHead({
           </Reveal>
         ))}
       <Reveal delay={0.05}>
-        <h2 className="display mt-5 text-[clamp(1.9rem,4.2vw,3.1rem)] text-balance">{title}</h2>
+        <h2 className="font-display text-6xl font-bold text-ink">{title} </h2>
       </Reveal>
       {intro && (
         <Reveal delay={0.1}>

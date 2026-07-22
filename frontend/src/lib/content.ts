@@ -219,25 +219,25 @@ export const PILLARS = [
   {
     id: 'publish',
     n: '01',
-    name: 'Publish with integrity',
-    title: 'Peer-reviewed, COPE-aligned, indexed-track journals and books.',
-    body: 'Double-blind review, a transparent decision process, and a documented ethics framework — the standards indexing bodies and institutions look for.',
+    name: 'Peer review',
+    title: 'Rigorous Peer Review',
+    body: 'Independent, transparent, and ethical review by experienced academic editors across every discipline we publish.',
     to: '/editorial-standards',
   },
   {
     id: 'read',
     n: '02',
-    name: 'Be read and cited',
-    title: 'Discoverability, indexing and science communication.',
-    body: 'Clean Crossref DOIs, structured metadata and Google Scholar compliance — plus Trueline Spectrum, the magazine that broadens reach beyond academics.',
+    name: 'Visibility',
+    title: 'Global Visibility',
+    body: 'Publishing research with DOI assignment, indexing support, metadata optimisation and global discoverability — so your work is read and cited worldwide.',
     to: '/indexing',
   },
   {
     id: 'support',
     n: '03',
-    name: 'Be supported',
-    title: 'Editorial, language and publication-readiness services.',
-    body: 'Transparent, optional support that helps good science meet publication standards — firewalled from every editorial decision.',
+    name: 'Excellence',
+    title: 'Publishing Excellence',
+    body: 'Professional editorial, production, plagiarism screening, formatting and publication support — firewalled from every editorial decision.',
     to: '/author-services',
   },
 ]
@@ -325,23 +325,42 @@ export const GROUP = [
   {
     id: 'research',
     name: 'Trueline Research',
+    short: 'Generates',
     role: 'Generates the output',
-    body: 'Research enablement and CRO-lite services for life sciences — mentoring, biostatistics, bioinformatics, and a college Centre-of-Excellence network that produces real research.',
-    output: 'The pipeline of credible manuscripts and data',
+    body: 'Research enablement and CRO-lite services supporting biomedical sciences, life sciences, engineering, technology, management, humanities, and multidisciplinary research through mentoring, biostatistics, bioinformatics, academic consulting, and institutional Centre-of-Excellence programs.',
+    output: 'Generates credible research, manuscripts, datasets, and innovation.',
   },
   {
     id: 'publishers',
     name: 'Trueline Publishers',
+    short: 'Credentializes',
     role: 'Credentializes it',
-    body: 'Integrity-first biomedical scholarly publishing — the flagship journal, books and proceedings, Trueline Spectrum, and firewalled author services.',
-    output: 'Credibility, indexing & recurring publishing revenue',
+    body: 'Integrity-first academic publishing through peer-reviewed journals, books, conference proceedings, Trueline Spectrum, DOI support, editorial excellence, indexing guidance, and professional publishing services.',
+    output: 'Builds credibility, global visibility, indexing, and long-term publishing value.',
+  },
+  {
+    id: 'journal',
+    name: 'Trueline Journal',
+    short: 'Publishes',
+    role: 'Publishes research',
+    body: 'Peer-reviewed international journals covering biomedical sciences, life sciences, engineering, AI, management, social sciences, education, pharmacy, nursing, agriculture, and multidisciplinary research.',
+    output: 'High-quality journals with ethical peer review and global accessibility.',
+  },
+  {
+    id: 'spectrum',
+    name: 'Trueline Spectrum',
+    short: 'Amplifies',
+    role: 'Amplifies knowledge',
+    body: 'A platform that promotes research visibility through articles, news, academic insights, interviews, institutional stories, conference highlights, and scientific communication.',
+    output: 'Expands research impact and community engagement.',
   },
   {
     id: 'startnet',
     name: 'StartNet',
-    role: 'Turns events into proceedings',
-    body: 'The life-sciences startup and innovation ecosystem — incubation, GCC and government partnerships, and Bio Summit events that become published proceedings.',
-    output: 'Deal flow, partnerships & event-driven content',
+    short: 'Innovates',
+    role: 'Drives innovation',
+    body: 'Innovation ecosystem connecting startups, researchers, academic institutions, incubation centres, conferences, hackathons, industry collaborations, and entrepreneurship initiatives.',
+    output: 'Converts ideas into collaborations, events, and impactful research outcomes.',
   },
 ]
 
@@ -493,7 +512,7 @@ export const AUTHOR_SERVICES = [
   {
     id: 'language',
     name: 'Language & copy editing',
-    body: 'Substantive and copy editing for clarity, grammar and academic tone — so reviewers judge your science, not your phrasing.',
+    body: 'Substantive and copy editing for clarity, grammar and academic tone — so reviewers judge your research, not your phrasing.',
   },
   {
     id: 'formatting',
@@ -654,8 +673,23 @@ export const CONTACT_FORMS = [
 ]
 
 export const OFFICES = [
-  { city: 'Salem (HQ)', detail: 'Building No. 7/232-19, Devi Towers, Kalipatti Privu Road, Vaikuntham, Sankari, Salem, Tamil Nadu - 637103' },
-  { city: 'Branch Office – Salem', detail: 'Co-Working Space, 2nd Floor, Sona Incubation Foundation, Sona College of Technology, Salem – 636005, Tamil Nadu, India' },
-  { city: 'Branch Office – Ernakulam', detail: 'Building No: 37/882, Opp. Municipal Town Hall, Thirunilath Housing Colony, South Kalamassery, Ernakulam – 682039, Kerala, India (Landmark: Cake Hut Shop)' },
-  { city: 'Gulf desk', detail: 'GCC institutional partnerships' },
+  {
+    city: 'Salem (HQ)',
+    detail: 'Building No. 7/232-19, Devi Towers, Kalipatti Privu Road, Vaikuntham, Sankari, Salem, Tamil Nadu - 637103',
+    mapUrl: 'https://maps.app.goo.gl/Pds3wFLny8nZ8i9W9?g_st=awb',
+  },
+  {
+    city: 'Branch Office – Salem',
+    subtitle: 'Trueline Research Group',
+    detail:
+      'Co-Working Space, 2nd Floor, Sona Incubation Foundation, Sona College of Technology, Salem – 636005, Tamil Nadu, India',
+    mapUrl: 'https://maps.app.goo.gl/44mdDMfmWJ1AkHNi9?g_st=awb',
+  },
+  {
+    city: 'Branch Office – Ernakulam',
+    subtitle: 'Trueline Research Group',
+    detail:
+      'Building No: 37/882, Opp. Municipal Town Hall, Thirunilath Housing Colony, South Kalamassery, Ernakulam – 682039, Kerala, India',
+    mapUrl: 'https://maps.app.goo.gl/hufdZdswJoj3JW297?g_st=awb',
+  },
 ]

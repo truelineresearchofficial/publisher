@@ -19,11 +19,12 @@ export default function CTABand() {
               <div>
                 <span className="eyebrow text-brand-300">Two doors, never blurred</span>
                 <h2 className="display mt-4 text-[clamp(1.9rem,3.6vw,2.8rem)] text-white">
-                  Submit your science. Or get it publication-ready.
+                  Publish your research. Or get it publication-ready.
                 </h2>
                 <p className="mt-4 max-w-md text-[15px] leading-relaxed text-white/65">
-                  Submitting a manuscript is free and routes straight to peer review. Author services are optional,
-                  transparently priced, and firewalled from every editorial decision.
+                  Whether your work is in medicine, engineering, technology, management, humanities, education or social
+                  sciences, Trueline Publishers provides professional publishing solutions to help your research reach a
+                  global audience.
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">

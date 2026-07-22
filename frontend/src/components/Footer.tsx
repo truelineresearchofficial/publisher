@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react'
+import { ArrowUpRight, Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { Wordmark } from './Marks'
 import { BRAND, FOOTER_COLS, JOURNAL } from '../lib/content'
+
+const SOCIAL_LINKS: { name: string; url: string; icon: LucideIcon }[] = [
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/company/99148180/', icon: Linkedin },
+  { name: 'Instagram', url: 'https://www.instagram.com/trueline_publisher_?igsh=OXRrbWNmY3czcjcw', icon: Instagram },
+  { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61554873172249', icon: Facebook },
+]
 
 export default function Footer() {
   return (
@@ -33,6 +40,24 @@ export default function Footer() {
                 </a>
               )}
             </div>
+
+            <div className="mt-8">
+              <h4 className="font-display text-sm font-semibold text-white">Follow Us</h4>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {SOCIAL_LINKS.map((s) => (
+                  <a
+                    key={s.name}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.name}
+                    className="grid h-12 w-12 place-items-center rounded-full bg-brand-500 text-white shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-1 hover:scale-105 hover:bg-brand-600 hover:shadow-xl"
+                  >
+                    <s.icon className="h-5 w-5" />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-8">
@@ -51,15 +76,6 @@ export default function Footer() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Scholarly identifiers row */}
-        <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-2 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-[12.5px] text-white/55">
-          <span className="font-semibold text-white/80">{JOURNAL.short}</span>
-          <span>{JOURNAL.issn}</span>
-          <span>{JOURNAL.doi}</span>
-          <span>{JOURNAL.access}</span>
-          <span className="text-white/40">Working launch title — re-branded biomedical identity</span>
         </div>
 
         <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-7 text-[13px] text-white/45 md:flex-row md:items-center md:justify-between">

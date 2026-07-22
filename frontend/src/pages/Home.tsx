@@ -69,14 +69,14 @@ function Hero() {
           </Reveal>
           <Reveal delay={0.08}>
             <h1 className="display mt-5 text-[clamp(2.6rem,6vw,4.6rem)] text-balance">
-              Where biomedical research is <span className="text-spectrum">published, indexed, and read.</span>
+              Where quality research is <span className="text-spectrum">published, indexed, and discovered.</span>
             </h1>
           </Reveal>
           <Reveal delay={0.12}>
             <p className="mt-7 max-w-2xl text-xl leading-relaxed text-ink-soft text-pretty">
-              Trueline Publishers is the biomedical and life-sciences scholarly publishing house of the Trueline Group.
-              We lead with peer review, editorial standards, indexing transparency and a credible board — and only then
-              with services and submission.
+              Trueline Publishers is an international academic publisher committed to advancing research across
+              biomedical sciences, life sciences, engineering, technology, management, humanities, social sciences, and
+              many other disciplines — through rigorous peer review, ethical publishing, and global visibility.
             </p>
           </Reveal>
           <Reveal delay={0.16}>
@@ -181,9 +181,9 @@ function FeaturedJournal() {
           <Reveal delay={0.08} className="lg:col-span-7">
             <div className="flex h-full flex-col justify-center">
               <SectionHead
-                eyebrow="A real journal, run to standard"
-                title="An indexed-track journal you can submit to with confidence."
-                intro="A transparent peer-review process, an honest indexing roadmap, and an editorial board listed with real names, affiliations and ORCIDs. The working launch title carries a re-branded biomedical identity with its own ISSN and DOIs."
+                eyebrow="Submit with confidence"
+                title="Submit your research with confidence."
+                intro="Publish original research, review articles, case studies, conference papers, book chapters and scholarly works through our international, peer-reviewed publishing platform — backed by a transparent review process, an honest indexing roadmap, and an editorial board listed with real names, affiliations and ORCIDs."
               />
               <div className="mt-7 grid gap-3 sm:grid-cols-2">
                 {[
@@ -216,9 +216,9 @@ function LatestArticles() {
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHead
-            eyebrow="Latest from the journal"
-            title="Published articles, openly accessible."
-            intro="Live content is the signal of a real, active publisher. Each article carries a DOI, structured metadata and citation export."
+            eyebrow="Featured journals"
+            title="Featured Journals Across Multiple Disciplines"
+            intro="Explore peer-reviewed journals spanning biomedical sciences, engineering, technology, management, education, social sciences and interdisciplinary research — each article carrying a DOI, structured metadata and citation export."
           />
           <ArrowLink to="/journals/the-journal#archives" className="pb-2">
             Browse all issues
@@ -334,9 +334,9 @@ function ServicesTeaser() {
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
           <Reveal className="lg:col-span-5">
             <SectionHead
-              eyebrow="Author Services — support, not shortcuts"
-              title="Help good science meet publication standards."
-              intro="Optional, transparently priced editorial support — language, formatting, integrity checks and figures. Clearly framed as support and firewalled from every editorial decision."
+              eyebrow="Publishing & author services"
+              title="Help good research meet publication standards."
+              intro="Transparent, optional support across the publishing journey — language editing, formatting, plagiarism and AI-integrity checks, figures and data visualisation, plus journal and book publication, conference proceedings, and DOI, ISBN and ISSN guidance. Clearly framed as support and firewalled from every editorial decision."
             />
             <div className="mt-6 flex flex-wrap gap-3">
               <Link to="/author-services" className="btn-primary h-11 px-6">
@@ -379,8 +379,8 @@ function InstitutionsTeaser() {
         <SectionHead
           align="center"
           eyebrow="For institutions"
-          title="Built for libraries, colleges and Gulf institutions."
-          intro="Institutional publishing, proceedings, editorial partnerships and library access — run to indexing and integrity standards."
+          title="Built for universities, institutions and libraries."
+          intro="Institutional publishing, conference proceedings, editorial partnerships and open-access library services — for universities, colleges, research institutions, hospitals, libraries, government organisations, industry researchers and academic societies, run to indexing and integrity standards."
         />
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {INSTITUTION_TRACKS.map((t, i) => (
@@ -411,7 +411,7 @@ function GroupFlywheel() {
           align="center"
           eyebrow="The Trueline Group flywheel"
           title="Research generates it. We credentialize it. StartNet scales it."
-          intro="A flywheel competitors can't easily match: Trueline Research produces credible output, Trueline Publishers turns it into indexed credibility, and StartNet turns events into published proceedings."
+          intro="A multidisciplinary ecosystem: Trueline Research produces credible output across fields, Trueline Publishers turns it into indexed, citable credibility, and StartNet turns events into published proceedings — advancing research, innovation, academic collaboration and knowledge dissemination."
         />
         <div className="mt-14">
           <Flywheel />
