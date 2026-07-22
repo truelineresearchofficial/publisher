@@ -27,19 +27,20 @@ export interface ContactSheetPayload {
  * The FastAPI backend remains the source of truth; this is a parallel mirror
  * into the team's spreadsheet. Called only after the FastAPI request succeeds.
  *
- * Uses `no-cors`: an Apps Script `/exec` URL 302-redirects the CORS preflight
- * that a normal cross-origin JSON POST triggers, and the browser rejects that —
- * so a plain CORS request would never append a row. In `no-cors` mode the JSON
- * body still reaches `e.postData.contents` for the script to parse; the
- * trade-off is that the response is opaque (status is unreadable). Failures are
- * logged to the console only.
+ * Uses `no-cors` and sends the JSON as a plain-text body (no explicit
+ * `Content-Type` header). `application/json` is NOT a CORS-safelisted value, so
+ * setting it makes this a "non-simple" request: the Apps Script `/exec` URL then
+ * 302-redirects to script.googleusercontent.com, which surfaces as a 401 in the
+ * browser and no row is appended. Omitting the header keeps this a simple request
+ * (default `text/plain`); Apps Script still receives the JSON string via
+ * `e.postData.contents` and parses it. In `no-cors` the response is opaque
+ * (status unreadable), so failures are logged to the console only.
  */
 export async function postToContactSheet(payload: ContactSheetPayload): Promise<void> {
   try {
     await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     })
   } catch (err) {
