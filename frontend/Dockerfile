@@ -7,7 +7,7 @@ COPY . .
 ARG VITE_API_BASE=/api
 ENV VITE_API_BASE=$VITE_API_BASE
 # Public Apps Script Web App URL for Contact -> Google Sheet mirroring.
-ARG VITE_GOOGLE_SCRIPT_URL=https://script.google.com/macros/s/AKfycbzfD8FMZxAVWlCh5epy9RLKxdCfWTDShUfyQEJtKbWKah9Swp69TN-Lkfd0E93xlKpt4A/exec
+ARG VITE_GOOGLE_SCRIPT_URL=https://script.google.com/macros/s/AKfycbw8baL81ZF7pDcuURgtx-W0WNUsdlJdhwqWKVtX4tGWcgN_c4E-ErI51uOdi-vBUGJ2Ng/exec
 ENV VITE_GOOGLE_SCRIPT_URL=$VITE_GOOGLE_SCRIPT_URL
 RUN npm run build
 

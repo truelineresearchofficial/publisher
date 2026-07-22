@@ -6,7 +6,7 @@
 // with a sensible default — same pattern as VITE_API_BASE in submit.ts.
 const GOOGLE_SCRIPT_URL =
   (import.meta.env.VITE_GOOGLE_SCRIPT_URL as string | undefined) ??
-  'https://script.google.com/macros/s/AKfycbzfD8FMZxAVWlCh5epy9RLKxdCfWTDShUfyQEJtKbWKah9Swp69TN-Lkfd0E93xlKpt4A/exec'
+  'https://script.google.com/macros/s/AKfycbw8baL81ZF7pDcuURgtx-W0WNUsdlJdhwqWKVtX4tGWcgN_c4E-ErI51uOdi-vBUGJ2Ng/exec'
 
 export interface ContactSheetPayload {
   name: string
