@@ -376,7 +376,7 @@ export default function Contact() {
                       {/* Google Maps */}
 <div className="mt-6 flex justify-center">
   <a
-    href={hq.mapUrl}
+    href={o.mapUrl}
     target="_blank"
     rel="noopener noreferrer"
     className="inline-flex w-auto items-center justify-center gap-2 rounded-2xl bg-brand-500 px-5 py-3 text-[15px] font-semibold text-white transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg"
