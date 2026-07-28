@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, ShieldCheck, Scale, Eye, Users } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Scale, Eye, Users, Linkedin, Instagram, Facebook, MessageCircle, Phone } from 'lucide-react'
 import { Container, Reveal, SectionHead } from '../lib/ui'
 import PageHero from '../components/PageHero'
-import Flywheel from '../components/Flywheel'
 import { PILLARS } from '../lib/content'
 
 export default function About() {
@@ -14,6 +13,77 @@ export default function About() {
         intro="We exist to convert research output into credibility. We lead with editorial standards, indexing transparency, peer-review integrity and credible people — because that is what lets institutions and authors trust what we publish."
         cta={{ label: 'Read our editorial standards', to: '/editorial-standards' }}
       />
+
+      {/* CEO Message */}
+      <section id="ceo-message" className="scroll-mt-28 bg-canvas py-20 sm:py-24">
+        <Container>
+          <div className="grid items-center gap-12 lg:grid-cols-12">
+            <Reveal className="lg:col-span-5">
+              <img
+                src="https://drive.google.com/thumbnail?id=1SDQpMWYEwvXVfH9nH9vG8bNafOrTKUc7&sz=w1000"
+                alt="Dr. V. Nagaraj, Chief Executive Officer of Trueline Publishers"
+                className="w-full h-[450px] object-cover object-[center_20%] rounded-3xl shadow-lg"
+              />
+            </Reveal>
+            <div className="lg:col-span-7">
+              <SectionHead eyebrow="Leadership" title="CEO Message" />
+              <p className="mt-5 font-display text-lg font-semibold text-ink">Dr. V. NAGARAJ</p>
+              <div className="prose-tl mt-4 max-w-2xl">
+                <p>
+                  At Trueline Publishers, our mission is to provide a trusted academic publishing platform built on
+                  integrity, transparency, and scholarly excellence. Every manuscript entrusted to us represents valuable
+                  research, and we are committed to ensuring that each submission receives a fair, ethical, and
+                  professional editorial process.
+                </p>
+                <p>
+                  We believe that quality research has the power to advance science, improve healthcare, and create
+                  meaningful global impact. Our dedicated editorial team, reviewers, authors, and institutional partners
+                  work together to uphold international publishing standards while supporting researchers throughout their
+                  publication journey.
+                </p>
+                <p>
+                  As we continue to grow, our commitment remains unchanged—to build a respected publishing ecosystem that
+                  values credibility, innovation, and long-term academic contribution.
+                </p>
+              </div>
+              <div className="mt-6 flex items-center gap-3">
+                {[
+                  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/nagaraj-varatharaj' },
+                  { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/nagaraj_varatharaj?igsh=NXR2N2JybDlicDR2' },
+                  { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/nagaraj.varatharaj.3' },
+                ].map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-ink-soft transition-colors hover:border-brand-500 hover:text-brand-600"
+                  >
+                    <s.icon className="h-5 w-5" />
+                  </a>
+                ))}
+                <a
+                  href="https://wa.me/message/7NHZKTMAKDIWJ1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-ink-soft transition-colors hover:border-brand-500 hover:text-brand-600"
+                >
+                  <MessageCircle className="h-5 w-5" />
+                </a>
+                <a
+                  href="tel:+919578873584"
+                  aria-label="95788 73584"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-ink-soft transition-colors hover:border-brand-500 hover:text-brand-600"
+                >
+                  <Phone className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
 
       {/* Who we are */}
       <section id="who" className="scroll-mt-28 bg-paper py-20 sm:py-24">
@@ -117,40 +187,6 @@ export default function About() {
         </Container>
       </section>
 
-      {/* The Trueline Group */}
-      <section id="group" className="scroll-mt-28 bg-canvas py-20 sm:py-24">
-        <Container>
-          <SectionHead
-            align="center"
-            eyebrow="The Trueline Group"
-            title="One engine, three entities, a single flywheel."
-            intro="Trueline Research generates the output, Trueline Publishers credentializes it, and StartNet turns events and ventures into proceedings and partnerships — each one compounding the others."
-          />
-          <div className="mt-14">
-            <Flywheel />
-          </div>
-        </Container>
-      </section>
-
-      {/* Contact CTA */}
-      <section className="bg-paper py-16">
-        <Container>
-          <Reveal>
-            <div className="flex flex-col items-center gap-5 rounded-4xl border border-line bg-ink px-8 py-14 text-center text-white">
-              <h2 className="display text-[clamp(1.7rem,3.2vw,2.4rem)] text-white">Work with a publisher that values reputation.</h2>
-              <p className="max-w-xl text-[15px] leading-relaxed text-white/65">
-                Whether you're an author, a reviewer or an institution, we'd welcome the conversation.
-              </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                <Link to="/submit" className="btn-brand h-12 px-7">Submit a manuscript</Link>
-                <Link to="/contact#institution" className="inline-flex h-12 items-center gap-1.5 rounded-full border border-white/20 px-7 text-sm font-semibold text-white hover:bg-white/10">
-                  Talk to us <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
     </>
   )
 }

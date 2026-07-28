@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom'
-import { ArrowRight, Check, Globe2 } from 'lucide-react'
+import { Check } from 'lucide-react'
 import { Container, Reveal, SectionHead } from '../lib/ui'
 import PageHero from '../components/PageHero'
 import { INSTITUTION_TRACKS } from '../lib/content'
@@ -44,37 +43,6 @@ export default function Institutions() {
               </Reveal>
             ))}
           </div>
-        </Container>
-      </section>
-
-      {/* Gulf / Vision 2030 spotlight */}
-      <section id="gulf" className="scroll-mt-28 bg-canvas py-16">
-        <Container>
-          <Reveal>
-            <div className="relative overflow-hidden rounded-4xl border border-line bg-gradient-to-br from-ink to-ink-2 p-8 text-white sm:p-12">
-              <div className="pointer-events-none absolute -right-12 -top-12 h-60 w-60 rounded-full bg-aqua/20 blur-3xl" />
-              <div className="relative grid gap-8 lg:grid-cols-12 lg:items-center">
-                <div className="lg:col-span-8">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold text-brand-200">
-                    <Globe2 className="h-3.5 w-3.5" /> Gulf institutions · Vision 2030
-                  </span>
-                  <h2 className="display mt-5 text-[clamp(1.7rem,3.2vw,2.4rem)] text-white">
-                    An English-language, integrity-first research-publishing partner.
-                  </h2>
-                  <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/70">
-                    For Gulf universities and research institutions advancing knowledge-economy and Vision 2030 goals, we
-                    bring research-publishing capability, editorial and language support, and joint capability building —
-                    delivered to international standards.
-                  </p>
-                </div>
-                <div className="lg:col-span-4">
-                  <Link to="/contact#institution" className="btn-brand h-12 w-full px-7">
-                    Open a conversation <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </Reveal>
         </Container>
       </section>
     </>

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ChevronDown, Globe, Menu, X, ArrowRight, FileText } from 'lucide-react'
-import { NAV, UTILITY_LINKS, GROUP_LINKS, type NavItem } from '../lib/content'
+import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react'
+import { NAV, GROUP_LINKS, type NavItem } from '../lib/content'
 import { Wordmark } from './Marks'
 
 export default function Nav() {
@@ -27,58 +27,6 @@ export default function Nav() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      {/* Utility bar */}
-      <div className="hidden border-b border-white/10 bg-ink text-white/80 lg:block">
-        <div className="container-tl flex h-9 items-center justify-between text-[12.5px]">
-          <div className="flex items-center gap-5">
-            {UTILITY_LINKS.map((u) => (
-              <Link key={u.label} to={u.to} className="transition-colors hover:text-white">
-                {u.label}
-              </Link>
-            ))}
-          </div>
-          <div className="flex items-center gap-5">
-            <div
-              className="relative"
-              onMouseEnter={() => setGroupOpen(true)}
-              onMouseLeave={() => setGroupOpen(false)}
-            >
-              <button className="flex items-center gap-1 transition-colors hover:text-white">
-                Trueline Group <ChevronDown className="h-3.5 w-3.5" />
-              </button>
-              <AnimatePresence>
-                {groupOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 6 }}
-                    transition={{ duration: 0.18 }}
-                    className="absolute right-0 top-full w-72 overflow-hidden rounded-2xl border border-line bg-white p-2 text-ink shadow-card-lg"
-                  >
-                    {GROUP_LINKS.map((g) => (
-                      <Link
-                        key={g.label}
-                        to={g.to}
-                        className="flex items-center justify-between rounded-xl px-3 py-2.5 transition-colors hover:bg-canvas"
-                      >
-                        <span>
-                          <span className="block text-sm font-semibold">{g.label}</span>
-                          <span className="block text-xs text-ink-faint">{g.note}</span>
-                        </span>
-                        <ArrowRight className="h-3.5 w-3.5 text-brand-500" />
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-            <button className="flex items-center gap-1 transition-colors hover:text-white">
-              <Globe className="h-3.5 w-3.5" /> EN
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* Main bar */}
       <div
         className={`border-b backdrop-blur-xl transition-all duration-300 ${
@@ -95,25 +43,63 @@ export default function Nav() {
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-0.5 xl:flex">
-            {NAV.map((item) => (
-              <div key={item.label} onMouseEnter={() => setOpen(item.columns ? item.label : null)}>
-                <Link
-                  to={item.to}
-                  className={`flex items-center gap-1 rounded-full px-3 py-2 text-[14.5px] font-medium transition-colors ${
-                    pathname === item.to ? 'text-brand-600' : 'text-ink hover:text-brand-600'
-                  }`}
+            {NAV.map((item) =>
+              item.group ? (
+                <div
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => {
+                    setOpen(null)
+                    setGroupOpen(true)
+                  }}
+                  onMouseLeave={() => setGroupOpen(false)}
                 >
-                  {item.label}
-                  {item.columns && <ChevronDown className="h-3.5 w-3.5 opacity-50" />}
-                </Link>
-              </div>
-            ))}
+                  <button className="flex items-center gap-1 rounded-full px-3 py-2 text-[14.5px] font-medium text-ink transition-colors hover:text-brand-600">
+                    {item.label}
+                    <ChevronDown className="h-3.5 w-3.5 opacity-50" />
+                  </button>
+                  <AnimatePresence>
+                    {groupOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 6 }}
+                        transition={{ duration: 0.18 }}
+                        className="absolute right-0 top-full w-72 overflow-hidden rounded-2xl border border-line bg-white p-2 text-ink shadow-card-lg"
+                      >
+                        {GROUP_LINKS.map((g) => (
+                          <a
+                            key={g.label}
+                            href={g.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-between rounded-xl px-3 py-2.5 transition-colors hover:bg-canvas"
+                          >
+                            <span className="block text-sm font-semibold">{g.label}</span>
+                            <ArrowRight className="h-3.5 w-3.5 text-brand-500" />
+                          </a>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <div key={item.label} onMouseEnter={() => setOpen(item.columns ? item.label : null)}>
+                  <Link
+                    to={item.to}
+                    className={`flex items-center gap-1 rounded-full px-3 py-2 text-[14.5px] font-medium transition-colors ${
+                      pathname === item.to ? 'text-brand-600' : 'text-ink hover:text-brand-600'
+                    }`}
+                  >
+                    {item.label}
+                    {item.columns && <ChevronDown className="h-3.5 w-3.5 opacity-50" />}
+                  </Link>
+                </div>
+              ),
+            )}
           </nav>
 
           <div className="flex items-center gap-2.5">
-            <Link to="/submit" className="btn-brand hidden h-10 px-5 text-[13.5px] sm:inline-flex">
-              <FileText className="h-4 w-4" /> Submit Manuscript
-            </Link>
             <button
               className="grid h-10 w-10 place-items-center rounded-full border border-line text-ink xl:hidden"
               onClick={() => setMobile((v) => !v)}
@@ -208,38 +194,48 @@ function MobileMenu() {
       className="max-h-[calc(100vh-68px)] overflow-y-auto border-b border-line bg-white xl:hidden"
     >
       <div className="container-tl space-y-1 py-5">
-        {NAV.map((item) => (
-          <div key={item.label} className="border-b border-line/70 py-1">
-            <Link to={item.to} className="block py-2.5 text-lg font-medium text-ink">
-              {item.label}
-            </Link>
-            {item.columns && (
+        {NAV.map((item) =>
+          item.group ? (
+            <div key={item.label} className="border-b border-line/70 py-1">
+              <span className="block py-2.5 text-lg font-medium text-ink">{item.label}</span>
               <ul className="pb-2">
-                {item.columns.flatMap((c) => c.items).map((leaf) => (
-                  <li key={leaf.label}>
-                    <Link to={leaf.to} className="block py-1.5 pl-3 text-[15px] text-ink-soft">
-                      {leaf.label}
-                    </Link>
+                {GROUP_LINKS.map((g) => (
+                  <li key={g.label}>
+                    <a
+                      href={g.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block py-1.5 pl-3 text-[15px] text-ink-soft"
+                    >
+                      {g.label}
+                    </a>
                   </li>
                 ))}
               </ul>
-            )}
-          </div>
-        ))}
-        <div className="grid grid-cols-2 gap-2 pt-3">
-          <Link to="/submit" className="btn-brand">
-            Submit Manuscript
-          </Link>
-          <Link to="/contact#quote" className="btn-ghost">
+            </div>
+          ) : (
+            <div key={item.label} className="border-b border-line/70 py-1">
+              <Link to={item.to} className="block py-2.5 text-lg font-medium text-ink">
+                {item.label}
+              </Link>
+              {item.columns && (
+                <ul className="pb-2">
+                  {item.columns.flatMap((c) => c.items).map((leaf) => (
+                    <li key={leaf.label}>
+                      <Link to={leaf.to} className="block py-1.5 pl-3 text-[15px] text-ink-soft">
+                        {leaf.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ),
+        )}
+        <div className="pt-3">
+          <Link to="/contact#quote" className="btn-ghost w-full">
             Request a Quote
           </Link>
-        </div>
-        <div className="flex flex-wrap gap-x-5 gap-y-1 pt-4 text-sm text-ink-faint">
-          {GROUP_LINKS.map((g) => (
-            <Link key={g.label} to={g.to} className="hover:text-brand-600">
-              {g.label}
-            </Link>
-          ))}
         </div>
       </div>
     </motion.div>

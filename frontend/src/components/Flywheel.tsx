@@ -102,18 +102,22 @@ export default function Flywheel() {
                   animate={{ r: on ? 42 : 38 }}
                 />
                 <circle cx={p.x} cy={p.y} r="6" fill={n.color} transform={`translate(0 -16)`} />
-                <text
-                  x={p.x}
-                  y={p.y + 4}
-                  textAnchor="middle"
-                  className="fill-ink"
-                  style={{ fontSize: 10.5, fontWeight: 600 }}
-                >
-                  {n.name.replace('Trueline ', '')}
-                </text>
-                <text x={p.x} y={p.y + 18} textAnchor="middle" className="fill-ink-faint" style={{ fontSize: 8 }}>
-                  {n.short}
-                </text>
+                <foreignObject x={p.x - 34} y={p.y - 12} width={68} height={44}>
+                  <div className="flex h-full w-full flex-col items-center justify-center text-center leading-tight">
+                    <span
+                      className="whitespace-normal break-words font-semibold text-ink"
+                      style={{ fontSize: 8, maxWidth: 64 }}
+                    >
+                      {n.name}
+                    </span>
+                    <span
+                      className="mt-0.5 whitespace-normal break-words text-ink-faint"
+                      style={{ fontSize: 7, maxWidth: 64 }}
+                    >
+                      {n.short}
+                    </span>
+                  </div>
+                </foreignObject>
               </g>
             )
           })}

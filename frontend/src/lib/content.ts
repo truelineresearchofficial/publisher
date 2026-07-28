@@ -64,11 +64,16 @@ export type NavColumn = { heading: string; audience?: string; items: NavLeaf[] }
 export type NavItem = {
   label: string
   to: string
+  group?: boolean
   columns?: NavColumn[]
   feature?: { title: string; body: string; to: string; cta: string }
 }
 
 export const NAV: NavItem[] = [
+  {
+    label: 'Home',
+    to: '/',
+  },
   {
     label: 'About',
     to: '/about',
@@ -98,45 +103,6 @@ export const NAV: NavItem[] = [
       to: '/editorial-standards#firewall',
       cta: 'How peer review works',
     },
-  },
-  {
-    label: 'Journals',
-    to: '/journals',
-    columns: [
-      {
-        heading: 'Journal portfolio',
-        items: [
-          { label: 'All journals', to: '/journals', note: 'Portfolio listing' },
-          { label: JOURNAL.name, to: '/journals/the-journal', note: 'Flagship · biomedical & life sciences' },
-        ],
-      },
-      {
-        heading: 'For authors',
-        audience: 'Submit & track',
-        items: [
-          { label: 'Aims & scope', to: '/journals/the-journal#scope' },
-          { label: 'Editorial board', to: '/journals/the-journal#board' },
-          { label: 'Author guidelines', to: '/journals/the-journal#guidelines' },
-          { label: 'Submission & peer-review process', to: '/journals/the-journal#process' },
-          { label: 'APC & waivers', to: '/journals/the-journal#apc' },
-          { label: 'Submit a manuscript', to: '/submit' },
-        ],
-      },
-    ],
-    feature: {
-      title: 'A credible editorial board',
-      body: 'Real names, real affiliations, ORCIDs — the single strongest trust signal a journal can carry. Ours is being constituted now.',
-      to: '/journals/the-journal#board',
-      cta: 'Meet the board',
-    },
-  },
-  {
-    label: 'Books & Proceedings',
-    to: '/books',
-  },
-  {
-    label: 'Trueline Spectrum',
-    to: '/spectrum',
   },
   {
     label: 'Author Services',
@@ -178,7 +144,6 @@ export const NAV: NavItem[] = [
         items: [
           { label: 'Overview', to: '/institutions#overview' },
           { label: 'For colleges & universities', to: '/institutions#colleges', note: 'Institutional publishing & training' },
-          { label: 'For Gulf institutions', to: '/institutions#gulf', note: 'Research-publishing export · Vision 2030' },
           { label: 'Library & access', to: '/institutions#library', note: 'Subscriptions & open access' },
           { label: 'Editorial partnerships', to: '/institutions#partnerships', note: 'White-label / co-published journals' },
         ],
@@ -192,8 +157,13 @@ export const NAV: NavItem[] = [
     },
   },
   {
-    label: 'Resources',
-    to: '/resources',
+    label: 'Books & Proceedings',
+    to: '/books',
+  },
+  {
+    label: 'Trueline Group',
+    to: '#',
+    group: true,
   },
   {
     label: 'Contact',
@@ -201,17 +171,12 @@ export const NAV: NavItem[] = [
   },
 ]
 
-export const UTILITY_LINKS: NavLeaf[] = [
-  { label: 'For Authors', to: '/journals/the-journal#guidelines' },
-  { label: 'For Reviewers', to: '/resources#reviewers' },
-  { label: 'For Readers', to: '/spectrum' },
-]
-
-export const GROUP_LINKS: NavLeaf[] = [
-  { label: 'Trueline Research', to: '/about#group', note: 'Generates the research output' },
-  { label: 'Trueline Publishers', to: '/', note: 'Credentializes it — you are here' },
-  { label: 'StartNet', to: '/about#group', note: 'Turns events into proceedings' },
-  { label: 'Trueline Spectrum', to: '/spectrum', note: 'The science magazine' },
+export const GROUP_LINKS: { label: string; href: string }[] = [
+  { label: 'Trueline Research', href: 'https://truelineresearch.in/' },
+  { label: 'Trueline Publishers', href: 'https://truelinepublisher.in/' },
+  { label: 'Trueline Spectrum', href: 'https://www.truelinespectrum.in/' },
+  { label: 'JAEID', href: 'https://www.jaeid.com/' },
+  { label: 'StartNet', href: 'https://startnetx.in/' },
 ]
 
 // ── Positioning: the three message pillars (every page maps to one) ─────────
@@ -339,20 +304,20 @@ export const GROUP = [
     output: 'Builds credibility, global visibility, indexing, and long-term publishing value.',
   },
   {
-    id: 'journal',
-    name: 'Trueline Journal',
-    short: 'Publishes',
-    role: 'Publishes research',
-    body: 'Peer-reviewed international journals covering biomedical sciences, life sciences, engineering, AI, management, social sciences, education, pharmacy, nursing, agriculture, and multidisciplinary research.',
-    output: 'High-quality journals with ethical peer review and global accessibility.',
-  },
-  {
     id: 'spectrum',
     name: 'Trueline Spectrum',
     short: 'Amplifies',
     role: 'Amplifies knowledge',
     body: 'A platform that promotes research visibility through articles, news, academic insights, interviews, institutional stories, conference highlights, and scientific communication.',
     output: 'Expands research impact and community engagement.',
+  },
+  {
+    id: 'jaeid',
+    name: 'Jaeid',
+    short: 'Publishes',
+    role: 'Peer-reviewed journal',
+    body: 'Jaeid is a peer-reviewed international journal publishing original research, reviews and case studies across biomedical, life sciences and multidisciplinary fields through a rigorous double-blind review process.',
+    output: 'A credible, citable journal built on ethical peer review and global accessibility.',
   },
   {
     id: 'startnet',
@@ -520,14 +485,14 @@ export const AUTHOR_SERVICES = [
     body: 'Journal-specific formatting, reference styling and submission-system preparation against the target journal’s guidelines.',
   },
   {
-    id: 'integrity',
-    name: 'Plagiarism & AI-integrity checks',
-    body: 'Pre-submission similarity reports and AI-use review, so you can resolve issues before an editor ever sees the manuscript.',
-  },
-  {
     id: 'figures',
     name: 'Figures, tables & data visualisation',
     body: 'Publication-quality figures and tables that meet reporting and accessibility standards.',
+  },
+  {
+    id: 'integrity',
+    name: 'Plagiarism & AI-integrity checks',
+    body: 'Pre-submission similarity reports and AI-use review, so you can resolve issues before an editor ever sees the manuscript.',
   },
 ]
 
@@ -553,12 +518,6 @@ export const INSTITUTION_TRACKS = [
     name: 'For colleges & universities',
     body: 'Institutional publishing, conference proceedings and research-methods training — links to the Trueline Research Centre-of-Excellence network.',
     points: ['Institutional & departmental publishing', 'Proceedings for campus events', 'Research-methods & publishing training'],
-  },
-  {
-    id: 'gulf',
-    name: 'For Gulf institutions',
-    body: 'A research-publishing export partner framed for Vision 2030 and Gulf higher-education strategy — English-language, integrity-first, indexing-ready.',
-    points: ['Research-publishing capability', 'Editorial & language support', 'Joint capability building'],
   },
   {
     id: 'library',
@@ -675,21 +634,21 @@ export const CONTACT_FORMS = [
 export const OFFICES = [
   {
     city: 'Salem (HQ)',
-    detail: 'Building No. 7/232-19, Devi Towers, Kalipatti Privu Road, Vaikuntham, Sankari, Salem, Tamil Nadu - 637103',
+    detail: 'Building No. 7/232-19, Devi Towers, Kalipatti Privu Road, Vaikuntham, Sankari, Salem, Tamil Nadu - 637103, India',
     mapUrl: 'https://maps.app.goo.gl/Pds3wFLny8nZ8i9W9?g_st=awb',
   },
   {
     city: 'Branch Office – Salem',
     subtitle: 'Trueline Research Group',
     detail:
-      'Co-Working Space, 2nd Floor, Sona Incubation Foundation, Sona College of Technology, Salem – 636005, Tamil Nadu, India',
+      'Co-Working Space, 2nd Floor, Sona Incubation Foundation, Sona College of Technology, Salem , Tamil Nadu – 636005, India',
     mapUrl: 'https://maps.app.goo.gl/44mdDMfmWJ1AkHNi9?g_st=awb',
   },
   {
     city: 'Branch Office – Ernakulam',
     subtitle: 'Trueline Research Group',
     detail:
-      'Building No: 37/882, Opp. Municipal Town Hall, Thirunilath Housing Colony, South Kalamassery, Ernakulam – 682039, Kerala, India',
+      'Building No: 37/882, Opp. Municipal Town Hall, Thirunilath Housing Colony, South Kalamassery, Ernakulam , Kerala – 682039, India',
     mapUrl: 'https://maps.app.goo.gl/hufdZdswJoj3JW297?g_st=awb',
   },
 ]

@@ -1,29 +1,10 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import {
-  ArrowRight,
-  BadgeCheck,
-  BookOpen,
-  CheckCircle2,
-  FileText,
-  Quote,
-  ScrollText,
-  ShieldCheck,
-  Sparkles,
-} from 'lucide-react'
-import { Container, Reveal, SectionHead, Eyebrow, ArrowLink } from '../lib/ui'
+import { ArrowRight, Quote, Sparkles } from 'lucide-react'
+import { Container, Reveal, SectionHead, Eyebrow } from '../lib/ui'
 import { JournalMark, HelixLines } from '../components/Marks'
-import TrustBar from '../components/TrustBar'
 import Flywheel from '../components/Flywheel'
-import CTABand from '../components/CTABand'
 import {
-  BRAND,
-  JOURNAL,
   PILLARS,
-  VISITORS,
-  LATEST_ARTICLES,
-  EDITORIAL_STRIP,
-  SPECTRUM_FEATURES,
   AUTHOR_SERVICES,
   INSTITUTION_TRACKS,
 } from '../lib/content'
@@ -32,16 +13,10 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <TrustBar />
       <Pillars />
-      <FeaturedJournal />
-      <LatestArticles />
-      <StandardsStrip />
-      <SpectrumTeaser />
       <ServicesTeaser />
       <InstitutionsTeaser />
       <GroupFlywheel />
-      <CTABand />
     </>
   )
 }
@@ -74,33 +49,16 @@ function Hero() {
           </Reveal>
           <Reveal delay={0.12}>
             <p className="mt-7 max-w-2xl text-xl leading-relaxed text-ink-soft text-pretty">
-              Trueline Publishers is an international academic publisher committed to advancing research across
-              biomedical sciences, life sciences, engineering, technology, management, humanities, social sciences, and
-              many other disciplines — through rigorous peer review, ethical publishing, and global visibility.
+              Trueline Publishers is an International Academic Publisher committed to advancing Research across
+              Biomedical Sciences, Life Sciences, Engineering, Technology, Management, Humanities, Social Sciences, and
+              many other Disciplines — through Rigorous Peer Review, Ethical Bublishing, and Global Visibility.
             </p>
           </Reveal>
           <Reveal delay={0.16}>
             <div className="mt-9 flex flex-wrap items-center gap-3">
-              <Link to="/submit" className="btn-brand h-12 px-7 text-[15px]">
-                <FileText className="h-4 w-4" /> Submit a Manuscript
+              <Link to="/contact" className="btn-brand h-12 px-7 text-[15px]">
+                Contact Us <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link to="/editorial-standards" className="btn-ghost h-12 px-7 text-[15px]">
-                How peer review works <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.2}>
-            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-ink-faint">
-              <span className="inline-flex items-center gap-1.5">
-                <ShieldCheck className="h-4 w-4 text-brand-500" /> {JOURNAL.review}
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <BadgeCheck className="h-4 w-4 text-brand-500" /> COPE-aligned ethics
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <ScrollText className="h-4 w-4 text-brand-500" /> {JOURNAL.access}
-              </span>
             </div>
           </Reveal>
         </div>
@@ -135,189 +93,6 @@ function Pillars() {
                   Learn more
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-      </Container>
-    </section>
-  )
-}
-
-function FeaturedJournal() {
-  return (
-    <section className="bg-canvas py-20 sm:py-24">
-      <Container>
-        <div className="grid items-stretch gap-10 lg:grid-cols-12">
-          <Reveal className="lg:col-span-5">
-            <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-4xl bg-ink p-9 text-white">
-              <div className="pointer-events-none absolute -right-12 -top-12 w-56 opacity-40">
-                <JournalMark className="h-full w-full" />
-              </div>
-              <div className="relative">
-                <span className="eyebrow text-brand-300">Featured journal</span>
-                <h3 className="mt-4 font-display text-2xl font-semibold leading-tight">{JOURNAL.name}</h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-white/65">{JOURNAL.scope}</p>
-              </div>
-              <div className="relative mt-8 grid grid-cols-2 gap-3 text-[13px]">
-                {[
-                  ['Review', JOURNAL.review],
-                  ['Access', JOURNAL.access],
-                  ['Frequency', JOURNAL.frequency],
-                  ['Identifier', JOURNAL.issn],
-                ].map(([k, v]) => (
-                  <div key={k} className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
-                    <div className="text-[10px] font-semibold uppercase tracking-wider text-white/45">{k}</div>
-                    <div className="mt-1 font-medium text-white/85">{v}</div>
-                  </div>
-                ))}
-              </div>
-              <Link to="/journals/the-journal" className="relative mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-300">
-                Visit the journal <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.08} className="lg:col-span-7">
-            <div className="flex h-full flex-col justify-center">
-              <SectionHead
-                eyebrow="Submit with confidence"
-                title="Submit your research with confidence."
-                intro="Publish original research, review articles, case studies, conference papers, book chapters and scholarly works through our international, peer-reviewed publishing platform — backed by a transparent review process, an honest indexing roadmap, and an editorial board listed with real names, affiliations and ORCIDs."
-              />
-              <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                {[
-                  { to: '/journals/the-journal#scope', label: 'Aims & scope' },
-                  { to: '/journals/the-journal#board', label: 'Editorial board' },
-                  { to: '/journals/the-journal#process', label: 'Submission & review' },
-                  { to: '/journals/the-journal#apc', label: 'APC & waivers' },
-                ].map((l) => (
-                  <Link
-                    key={l.label}
-                    to={l.to}
-                    className="group flex items-center justify-between rounded-2xl border border-line bg-white px-5 py-4 transition-colors hover:border-brand-300"
-                  >
-                    <span className="text-[15px] font-medium text-ink">{l.label}</span>
-                    <ArrowRight className="h-4 w-4 text-brand-500 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </Container>
-    </section>
-  )
-}
-
-function LatestArticles() {
-  return (
-    <section className="bg-paper py-20 sm:py-24">
-      <Container>
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHead
-            eyebrow="Featured journals"
-            title="Featured Journals Across Multiple Disciplines"
-            intro="Explore peer-reviewed journals spanning biomedical sciences, engineering, technology, management, education, social sciences and interdisciplinary research — each article carrying a DOI, structured metadata and citation export."
-          />
-          <ArrowLink to="/journals/the-journal#archives" className="pb-2">
-            Browse all issues
-          </ArrowLink>
-        </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {LATEST_ARTICLES.map((a, i) => (
-            <Reveal key={a.title} delay={i * 0.06}>
-              <article className="group flex h-full flex-col rounded-3xl border border-line bg-white p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-lg">
-                <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-[11px] font-semibold text-brand-700">
-                  {a.type}
-                </span>
-                <h3 className="mt-4 font-display text-lg font-semibold leading-snug text-ink group-hover:text-brand-700">
-                  {a.title}
-                </h3>
-                <div className="mt-4 flex-1" />
-                <div className="flex items-center justify-between border-t border-line pt-4 text-[12.5px] text-ink-faint">
-                  <span>{a.journal} · {a.date}</span>
-                  <span>{a.doi}</span>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-        <Reveal>
-          <p className="mt-6 text-center text-[12.5px] text-ink-faint">
-            Sample content shown ahead of launch · Volume 1 in production
-          </p>
-        </Reveal>
-      </Container>
-    </section>
-  )
-}
-
-function StandardsStrip() {
-  return (
-    <section className="bg-ink py-16 text-white">
-      <Container>
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-          <Reveal className="lg:col-span-5">
-            <span className="eyebrow text-brand-300">The standards behind every article</span>
-            <h2 className="display mt-4 text-[clamp(1.8rem,3.4vw,2.6rem)] text-white">
-              Peer-reviewed. Indexed-track. Transparent.
-            </h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-white/65">
-              The single statement that separates us from predatory publishing: purchasing an author service never
-              influences an editorial decision.
-            </p>
-            <Link to="/editorial-standards#firewall" className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-300">
-              Read the editorial firewall <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Reveal>
-          <div className="lg:col-span-7">
-            <div className="grid gap-3 sm:grid-cols-2">
-              {EDITORIAL_STRIP.map((s, i) => (
-                <Reveal key={s} delay={i * 0.04}>
-                  <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4">
-                    <CheckCircle2 className="h-5 w-5 shrink-0 text-brand-300" />
-                    <span className="text-[15px] font-medium text-white/90">{s}</span>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Container>
-    </section>
-  )
-}
-
-function SpectrumTeaser() {
-  return (
-    <section className="bg-canvas py-20 sm:py-24">
-      <Container>
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHead
-            eyebrow="Trueline Spectrum"
-            title="The science, told so people read it."
-            intro="Our magazine layer — researcher profiles, science explainers and Centre-of-Excellence stories — broadens reach far beyond academics. The friendly front door."
-          />
-          <ArrowLink to="/spectrum" className="pb-2">
-            Read Trueline Spectrum
-          </ArrowLink>
-        </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {SPECTRUM_FEATURES.map((f, i) => (
-            <Reveal key={f.title} delay={i * 0.05}>
-              <Link
-                to="/spectrum"
-                className="group flex h-full flex-col rounded-3xl border border-line bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-card"
-              >
-                <div className="grid h-11 w-11 place-items-center rounded-2xl bg-brand-50">
-                  <BookOpen className="h-5 w-5 text-brand-600" />
-                </div>
-                <span className="mt-5 text-[11px] font-semibold uppercase tracking-wider text-brand-500">{f.tag}</span>
-                <h3 className="mt-2 flex-1 font-display text-[17px] font-semibold leading-snug text-ink group-hover:text-brand-700">
-                  {f.title}
-                </h3>
-                <span className="mt-4 text-[12.5px] text-ink-faint">{f.read}</span>
               </Link>
             </Reveal>
           ))}
@@ -382,9 +157,13 @@ function InstitutionsTeaser() {
           title="Built for universities, institutions and libraries."
           intro="Institutional publishing, conference proceedings, editorial partnerships and open-access library services — for universities, colleges, research institutions, hospitals, libraries, government organisations, industry researchers and academic societies, run to indexing and integrity standards."
         />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {INSTITUTION_TRACKS.map((t, i) => (
-            <Reveal key={t.id} delay={i * 0.05}>
+        <div className="mt-12 flex flex-wrap justify-center gap-6">
+          {INSTITUTION_TRACKS.filter((t) => t.id !== 'gulf').map((t, i) => (
+            <Reveal
+              key={t.id}
+              delay={i * 0.05}
+              className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]"
+            >
               <Link
                 to={`/institutions#${t.id}`}
                 className="group flex h-full flex-col rounded-3xl border border-line bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-card"
@@ -410,21 +189,12 @@ function GroupFlywheel() {
         <SectionHead
           align="center"
           eyebrow="The Trueline Group flywheel"
-          title="Research generates it. We credentialize it. StartNet scales it."
-          intro="A multidisciplinary ecosystem: Trueline Research produces credible output across fields, Trueline Publishers turns it into indexed, citable credibility, and StartNet turns events into published proceedings — advancing research, innovation, academic collaboration and knowledge dissemination."
+          title="Five organisations, one connected research and publishing ecosystem."
+          intro="Trueline Research, Trueline Publishers, Trueline Spectrum, Jaeid and StartNet work together as a single ecosystem: Trueline Research produces and supports scholarly work, Trueline Publishers and Jaeid bring it through peer review into publication, Trueline Spectrum shares it with wider audiences, and StartNet connects it to innovation, events and collaboration."
         />
         <div className="mt-14">
           <Flywheel />
         </div>
-        <Reveal>
-          <div className="mx-auto mt-12 flex max-w-2xl flex-wrap items-center justify-center gap-3">
-            <Link to="/about#group" className="btn-ghost h-11 px-6">
-              How the group works
-            </Link>
-            <span className="text-sm text-ink-faint">·</span>
-            <span className="text-sm text-ink-faint">{BRAND.group}</span>
-          </div>
-        </Reveal>
       </Container>
     </section>
   )

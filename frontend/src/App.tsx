@@ -7,14 +7,9 @@ import About from './pages/About'
 import EditorialStandards from './pages/EditorialStandards'
 import Ethics from './pages/Ethics'
 import Indexing from './pages/Indexing'
-import Journals from './pages/Journals'
-import Journal from './pages/Journal'
 import Books from './pages/Books'
-import Spectrum from './pages/Spectrum'
 import AuthorServices from './pages/AuthorServices'
 import Institutions from './pages/Institutions'
-import Resources from './pages/Resources'
-import Submit from './pages/Submit'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 
@@ -46,14 +41,9 @@ export default function App() {
           <Route path="/editorial-standards" element={<EditorialStandards />} />
           <Route path="/ethics" element={<Ethics />} />
           <Route path="/indexing" element={<Indexing />} />
-          <Route path="/journals" element={<Journals />} />
-          <Route path="/journals/the-journal" element={<Journal />} />
           <Route path="/books" element={<Books />} />
-          <Route path="/spectrum" element={<Spectrum />} />
           <Route path="/author-services" element={<AuthorServices />} />
           <Route path="/institutions" element={<Institutions />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/submit" element={<Submit />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

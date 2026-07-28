@@ -12,7 +12,7 @@ export default function PageHero({
   cta,
   children,
 }: {
-  eyebrow: string
+  eyebrow?: string
   title: ReactNode
   intro: ReactNode
   audience?: string
@@ -34,9 +34,11 @@ export default function PageHero({
               </span>
             </Reveal>
           )}
-          <Reveal delay={0.04}>
-            <Eyebrow>{eyebrow}</Eyebrow>
-          </Reveal>
+          {eyebrow && (
+            <Reveal delay={0.04}>
+              <Eyebrow>{eyebrow}</Eyebrow>
+            </Reveal>
+          )}
           <Reveal delay={0.08}>
             <h1 className="display mt-5 text-[clamp(2.4rem,5.4vw,4.1rem)] text-balance">{title}</h1>
           </Reveal>

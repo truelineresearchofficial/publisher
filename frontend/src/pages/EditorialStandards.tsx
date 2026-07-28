@@ -1,24 +1,12 @@
-import { Link } from 'react-router-dom'
-import { ArrowRight, ShieldCheck, Lock, Scale, Eye, GitBranch } from 'lucide-react'
+import { ShieldCheck, Scale, Eye, GitBranch } from 'lucide-react'
 import { Container, Reveal, SectionHead } from '../lib/ui'
-import PageHero from '../components/PageHero'
-import TrustBar from '../components/TrustBar'
 import { REVIEW_STEPS, REVIEW_FACTS } from '../lib/content'
 
 export default function EditorialStandards() {
   return (
     <>
-      <PageHero
-        audience="The trust layer"
-        eyebrow="Editorial standards & peer review"
-        title="The page that does the heaviest trust work."
-        intro="How we review, who decides, and the firewall between paid services and editorial decisions. This is the single most important page on the site — and the clearest line between us and predatory publishing."
-        cta={{ label: 'See the editorial firewall', to: '#firewall' }}
-      />
-      <TrustBar />
-
       {/* The model */}
-      <section className="bg-paper py-20 sm:py-24">
+      <section className="bg-paper pt-[140px] pb-20 sm:pb-24">
         <Container>
           <div className="grid gap-10 lg:grid-cols-12">
             <Reveal className="lg:col-span-5">
@@ -84,58 +72,6 @@ export default function EditorialStandards() {
         </Container>
       </section>
 
-      {/* The firewall — the single most important statement */}
-      <section id="firewall" className="scroll-mt-28 bg-ink py-20 text-white sm:py-24">
-        <Container>
-          <div className="mx-auto max-w-3xl text-center">
-            <Reveal>
-              <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-brand-500/20">
-                <Lock className="h-7 w-7 text-brand-300" />
-              </div>
-            </Reveal>
-            <Reveal delay={0.05}>
-              <span className="eyebrow mt-6 justify-center text-brand-300">The services–editorial firewall</span>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <h2 className="display mt-4 text-[clamp(1.9rem,4vw,3rem)] text-white">
-                Purchasing an author service does <span className="text-brand-300">not</span> influence acceptance.
-              </h2>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <p className="mt-5 text-lg leading-relaxed text-white/70">
-                Editorial decisions are made by editors and reviewers, on scientific merit alone. Our author-services
-                team is operated separately from the editorial office, and the two never share decision-making. This is
-                the single statement that separates a legitimate publisher from a paper mill — and we mean it.
-              </p>
-            </Reveal>
-          </div>
-          <div className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-2">
-            {[
-              'Submitting a manuscript is free and routes straight to peer review.',
-              'You can publish with us without buying any service.',
-              'Author services are priced openly — never negotiated against acceptance.',
-              'No "fast-track for a fee", no acceptance guarantees, ever.',
-            ].map((t, i) => (
-              <Reveal key={t} delay={i * 0.05}>
-                <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-                  <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand-300" />
-                  <span className="text-[14.5px] leading-relaxed text-white/85">{t}</span>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal>
-            <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <Link to="/ethics" className="btn-brand h-11 px-6">
-                Read our publication ethics
-              </Link>
-              <Link to="/author-services#firewall" className="inline-flex h-11 items-center gap-1.5 rounded-full border border-white/20 px-6 text-sm font-semibold text-white hover:bg-white/10">
-                How author services stay separate <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
     </>
   )
 }

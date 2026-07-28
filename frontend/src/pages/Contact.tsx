@@ -294,28 +294,28 @@ export default function Contact() {
       </section>
 
       {/* Our Offices — HQ centered, branches side-by-side below */}
-      <section className="bg-canvas py-16 sm:py-20">
+      <section className="bg-canvas py-10 sm:py-14">
         <Container>
           <div className="text-center">
             <p className="text-lg font-semibold uppercase tracking-[0.25em] text-brand-600">
               - Reach us
             </p>
-            <h2 className="mt-5 font-display text-5xl font-bold text-ink">
+            <h2 className="mt-3 font-display text-5xl font-bold text-ink">
               Our Offices
             </h2>
           </div>
 
           {/* Headquarters */}
           <Reveal>
-            <h3 className="mt-12 text-center font-display text-3xl font-semibold text-ink">
+            <h3 className="mt-8 text-center font-display text-3xl font-semibold text-ink">
               Headquarters
             </h3>
           </Reveal>
 
           <Reveal delay={0.05}>
-            <div className="mx-auto mt-5 max-w-2xl rounded-4xl border border-line bg-white p-7 text-center shadow-card transition-all duration-500 ease-in-out hover:-translate-y-2 hover:shadow-2xl hover:border-brand-300 cursor-pointer sm:p-9">
+            <div className="mx-auto mt-4 max-w-2xl rounded-4xl border border-line bg-white p-5 text-center shadow-card transition-all duration-500 ease-in-out hover:-translate-y-2 hover:shadow-2xl hover:border-brand-300 cursor-pointer sm:p-6">
 
-              <div className="mt-2 flex items-center justify-center gap-3">
+              <div className="flex items-center justify-center gap-3">
                 <div className="grid h-11 w-11 place-items-center rounded-2xl bg-brand-500 text-white">
                   <MapPin className="h-5 w-5" />
                 </div>
@@ -325,7 +325,7 @@ export default function Contact() {
                 </p>
               </div>
 
-              <p className="mx-auto mt-4 max-w-lg text-lg leading-8 text-ink-soft">
+              <p className="mx-auto mt-3 max-w-lg text-lg leading-8 text-ink-soft">
                 {hq.detail}
               </p>
 
@@ -333,7 +333,7 @@ export default function Contact() {
                 href={hq.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-500 px-6 py-3 text-[15px] font-semibold text-white transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg"
+                className="mt-4 inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-500 px-6 py-3 text-[15px] font-semibold text-white transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg"
               >
                 <MapPin className="h-5 w-5" />
                 View on Google Maps
@@ -345,12 +345,12 @@ export default function Contact() {
           {branches.length > 0 && (
             <>
               <Reveal>
-                <h3 className="mt-14 text-center font-display text-3xl font-semibold text-ink">Branch Offices</h3>
+                <h3 className="mt-8 text-center font-display text-3xl font-semibold text-ink">Branch Offices</h3>
               </Reveal>
-              <div className="mx-auto mt-6 grid max-w-6xl grid-cols-1 justify-center gap-8 sm:grid-cols-2">
+              <div className="mx-auto mt-5 grid max-w-6xl grid-cols-1 justify-center gap-5 sm:grid-cols-2">
                 {branches.map((o, i) => (
                   <Reveal key={o.city} delay={0.05 * (i + 1)} className="h-full">
-                    <div className="flex h-full flex-col rounded-3xl border border-line bg-white p-6 shadow-card transition-all duration-500 ease-in-out hover:-translate-y-2 hover:shadow-2xl hover:border-brand-300 cursor-pointer">
+                    <div className="flex h-full flex-col rounded-3xl border border-line bg-white p-5 shadow-card transition-all duration-500 ease-in-out hover:-translate-y-2 hover:shadow-2xl hover:border-brand-300 cursor-pointer">
 
                       {/* Icon + Branch Name */}
                       <div className="flex items-center gap-3">
@@ -364,7 +364,7 @@ export default function Contact() {
                       </div>
 
                       {/* Subtitle */}
-                      <p className="mt-4 text-xl font-semibold text-brand-600">
+                      <p className="mt-3 text-xl font-semibold text-brand-600">
                         {o.subtitle}
                       </p>
 
@@ -374,7 +374,7 @@ export default function Contact() {
                       </p>
 
                       {/* Google Maps */}
-<div className="mt-6 flex justify-center">
+<div className="mt-4 flex justify-center">
   <a
     href={o.mapUrl}
     target="_blank"
