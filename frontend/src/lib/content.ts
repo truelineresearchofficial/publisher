@@ -18,8 +18,8 @@
 export const BRAND = {
   name: 'Trueline Publishers',
   // Tagline option chosen from the blueprint:
-  tagline: 'Integrity-first publishing for life sciences.',
-  promise: 'Where biomedical research is published, indexed, and read.',
+  tagline: 'Integrity-first, multidisciplinary academic publishing.',
+  promise: 'Where research across every discipline is published, indexed, and read.',
   hq: 'Building No. 7/232-19, Devi Towers, Kalipatti Privu Road, Vaikuntham, Sankari, Salem, Tamil Nadu - 637103',
   group: 'Part of the Trueline Group',
   email: 'info@truelinepublisher.in',
@@ -60,12 +60,13 @@ export const TRUST_BADGES = [
 
 // ── Navigation ─────────────────────────────────────────────────────────────
 export type NavLeaf = { label: string; to: string; note?: string }
-export type NavColumn = { heading: string; audience?: string; items: NavLeaf[] }
+export type NavColumn = { heading: string; audience?: string; to?: string; items: NavLeaf[] }
 export type NavItem = {
   label: string
   to: string
   group?: boolean
   columns?: NavColumn[]
+  wideGrid?: boolean
   feature?: { title: string; body: string; to: string; cta: string }
 }
 
@@ -81,7 +82,7 @@ export const NAV: NavItem[] = [
       {
         heading: 'The publishing house',
         items: [
-          { label: 'Who we are', to: '/about#who', note: 'Mission & focus on life sciences' },
+          { label: 'Who we are', to: '/about#who', note: 'Mission & multidisciplinary focus' },
           { label: 'Leadership & editorial governance', to: '/about#governance', note: 'How decisions are made' },
           { label: 'The Trueline Group', to: '/about#group', note: 'Research · Publishers · StartNet' },
           { label: 'Contact editorial', to: '/contact', note: 'Talk to the editorial office' },
@@ -105,35 +106,8 @@ export const NAV: NavItem[] = [
     },
   },
   {
-    label: 'Author Services',
+    label: 'Our Services',
     to: '/author-services',
-    columns: [
-      {
-        heading: 'Publication-readiness support',
-        audience: 'Independent of editorial decisions',
-        items: [
-          { label: 'Overview', to: '/author-services#overview', note: 'Support — not "we publish you"' },
-          { label: 'Language & copy editing', to: '/author-services#language' },
-          { label: 'Formatting & submission support', to: '/author-services#formatting' },
-          { label: 'Plagiarism & AI-integrity checks', to: '/author-services#integrity' },
-          { label: 'Figures, tables & data visualisation', to: '/author-services#figures' },
-        ],
-      },
-      {
-        heading: 'Transparent & firewalled',
-        items: [
-          { label: 'Pricing & turnaround', to: '/author-services#pricing', note: 'Published, not on request' },
-          { label: 'The editorial firewall', to: '/author-services#firewall', note: 'No effect on acceptance' },
-          { label: 'Request a quote', to: '/contact#quote', note: 'Separate from submission' },
-        ],
-      },
-    ],
-    feature: {
-      title: 'Support, not shortcuts',
-      body: 'We help good science meet publication standards. Buying an editing service never changes a journal’s editorial decision.',
-      to: '/author-services#firewall',
-      cta: 'Read the firewall',
-    },
   },
   {
     label: 'For Institutions',
@@ -458,7 +432,7 @@ export const APC = {
 
 // ── Books & Proceedings ─────────────────────────────────────────────────────
 export const BOOKS = [
-  { title: 'Edited volumes & monographs', body: 'Peer-reviewed scholarly books in biomedical and life-sciences fields, with ISBNs and chapter-level DOIs.' },
+  { title: 'Edited volumes & monographs', body: 'Peer-reviewed scholarly books across all academic disciplines, with ISBN registration and chapter-level DOIs.' },
   { title: 'Conference proceedings', body: 'Proceedings from StartNet Bio Summit events — every event becomes a citable, indexed publication.', tag: 'StartNet tie-in' },
   { title: 'Catalogue', body: 'A growing catalogue of published titles with metadata, DOIs and distribution.' },
   { title: 'ISBN & distribution', body: 'ISBN allocation, metadata feeds and distribution to libraries and academic channels.' },
@@ -633,19 +607,19 @@ export const CONTACT_FORMS = [
 
 export const OFFICES = [
   {
-    city: 'Salem (HQ)',
+    city: 'Salem (HQ), Tamil Nadu',
     detail: 'Building No. 7/232-19, Devi Towers, Kalipatti Privu Road, Vaikuntham, Sankari, Salem, Tamil Nadu - 637103, India',
     mapUrl: 'https://maps.app.goo.gl/Pds3wFLny8nZ8i9W9?g_st=awb',
   },
   {
-    city: 'Branch Office – Salem',
+    city: 'Branch Office – Salem, Tamil Nadu',
     subtitle: 'Trueline Research Group',
     detail:
       'Co-Working Space, 2nd Floor, Sona Incubation Foundation, Sona College of Technology, Salem , Tamil Nadu – 636005, India',
     mapUrl: 'https://maps.app.goo.gl/44mdDMfmWJ1AkHNi9?g_st=awb',
   },
   {
-    city: 'Branch Office – Ernakulam',
+    city: 'Branch Office – Ernakulam, Kerala',
     subtitle: 'Trueline Research Group',
     detail:
       'Building No: 37/882, Opp. Municipal Town Hall, Thirunilath Housing Colony, South Kalamassery, Ernakulam , Kerala – 682039, India',

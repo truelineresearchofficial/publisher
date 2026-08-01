@@ -1,15 +1,61 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, ShieldCheck, Scale, Eye, Users, Linkedin, Instagram, Facebook, MessageCircle, Phone } from 'lucide-react'
+import { useInView, useReducedMotion } from 'framer-motion'
+import { ArrowRight, ShieldCheck, Scale, Eye, Users, Linkedin, Instagram, Facebook, MessageCircle, Phone, BookOpen, Presentation, FileText, Building2, GraduationCap } from 'lucide-react'
 import { Container, Reveal, SectionHead } from '../lib/ui'
 import PageHero from '../components/PageHero'
 import { PILLARS } from '../lib/content'
+
+/** Count from 0 to `value` once the number scrolls into view; honors reduced-motion. */
+function CountUp({ value, suffix = '' }: { value: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-60px' })
+  const reduce = useReducedMotion()
+  const [display, setDisplay] = useState(0)
+
+  useEffect(() => {
+    if (!inView) return
+    if (reduce) {
+      setDisplay(value)
+      return
+    }
+    const duration = 1600
+    let raf = 0
+    let start: number | null = null
+    const step = (now: number) => {
+      if (start === null) start = now
+      const p = Math.min((now - start) / duration, 1)
+      const eased = 1 - Math.pow(1 - p, 3)
+      setDisplay(Math.round(eased * value))
+      if (p < 1) raf = requestAnimationFrame(step)
+    }
+    raf = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(raf)
+  }, [inView, value, reduce])
+
+  return (
+    <span ref={ref}>
+      {display.toLocaleString('en-US')}
+      {suffix}
+    </span>
+  )
+}
+
+const IMPACT_STATS = [
+  { icon: BookOpen, value: 200, suffix: '+', title: 'Books Published' },
+  { icon: Presentation, value: 50, suffix: '+', title: 'International Conferences Organized' },
+  { icon: FileText, value: 1500, suffix: '+', title: 'Scopus, Web of Science, Conference & Peer-Reviewed Publications' },
+  { icon: Building2, value: 150, suffix: '+', title: 'Institutions & Universities Partnered' },
+  { icon: GraduationCap, value: 15000, suffix: '+', title: 'Students Trained Through Workshops' },
+  { icon: Users, value: 5000, suffix: '+', title: 'Faculty Trained Through FDPs & Workshops' },
+]
 
 export default function About() {
   return (
     <>
       <PageHero
         eyebrow="About Trueline Publishers"
-        title="A trust-led scholarly publisher for life sciences."
+        title="A trust-led, multidisciplinary academic publisher."
         intro="We exist to convert research output into credibility. We lead with editorial standards, indexing transparency, peer-review integrity and credible people — because that is what lets institutions and authors trust what we publish."
         cta={{ label: 'Read our editorial standards', to: '/editorial-standards' }}
       />
@@ -30,20 +76,13 @@ export default function About() {
               <p className="mt-5 font-display text-lg font-semibold text-ink">Dr. V. NAGARAJ</p>
               <div className="prose-tl mt-4 max-w-2xl">
                 <p>
-                  At Trueline Publishers, our mission is to provide a trusted academic publishing platform built on
-                  integrity, transparency, and scholarly excellence. Every manuscript entrusted to us represents valuable
-                  research, and we are committed to ensuring that each submission receives a fair, ethical, and
-                  professional editorial process.
+                  With over 13 years of experience in academic publishing, research, and innovation, I founded Trueline Publisher with a vision to deliver ethical, high-quality, and globally recognized publishing solutions. We specialize in book publishing, Scopus and Web of Science-indexed research publications, and multidisciplinary journals across Engineering, Technology, Medical, Science, Management, Arts, and other disciplines.
                 </p>
                 <p>
-                  We believe that quality research has the power to advance science, improve healthcare, and create
-                  meaningful global impact. Our dedicated editorial team, reviewers, authors, and institutional partners
-                  work together to uphold international publishing standards while supporting researchers throughout their
-                  publication journey.
+                  Our commitment is to provide rigorous peer review, transparent editorial practices, and international publishing standards, while supporting researchers through academic profiling, research visibility, and global dissemination. We also collaborate with universities and academic institutions through international conferences, research partnerships, and institutional publishing programs to strengthen the global research ecosystem.
                 </p>
                 <p>
-                  As we continue to grow, our commitment remains unchanged—to build a respected publishing ecosystem that
-                  values credibility, innovation, and long-term academic contribution.
+                  Thank you for choosing Trueline Publisher. We are proud to be your trusted publishing partner in advancing research, innovation, and academic excellence worldwide.
                 </p>
               </div>
               <div className="mt-6 flex items-center gap-3">
@@ -85,6 +124,30 @@ export default function About() {
         </Container>
       </section>
 
+      {/* Our Impact in Numbers */}
+      <section id="impact" className="scroll-mt-28 bg-paper py-20 sm:py-24">
+        <Container>
+          <SectionHead
+            align="center"
+            eyebrow="Our Impact"
+            title="We Are Proud Of..."
+            intro="Delivering measurable excellence in academic publishing, research, conferences, institutional collaborations, and professional development."
+          />
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {IMPACT_STATS.map((s, i) => (
+              <Reveal key={s.title} delay={(i % 3) * 0.06}>
+                <div className="flex h-full flex-col items-center rounded-3xl border border-line bg-white p-8 text-center shadow-card transition-all hover:-translate-y-1 hover:shadow-card-lg">
+                  <div className="font-display text-5xl font-bold text-ink">
+                    <CountUp value={s.value} suffix={s.suffix} />
+                  </div>
+                  <p className="mt-3 text-[14px] leading-relaxed text-ink-soft">{s.title}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* Who we are */}
       <section id="who" className="scroll-mt-28 bg-paper py-20 sm:py-24">
         <Container>
@@ -95,9 +158,11 @@ export default function About() {
             <div className="lg:col-span-7">
               <div className="prose-tl max-w-2xl">
                 <p>
-                  Trueline Publishers is the biomedical and life-sciences scholarly publishing house of the Trueline
-                  Group. Our job in the group is singular: to credentialize research — turning credible work into
-                  peer-reviewed, indexed, citable publications.
+                  Trueline Publishers is the multidisciplinary academic publishing house of the Trueline Group,
+                  supporting authors across engineering, technology, science, management, commerce, arts, education,
+                  pharmacy, nursing, agriculture, humanities and the social sciences. Our job in the group is singular:
+                  to credentialize research — turning credible work into peer-reviewed, indexed, citable publications
+                  through books, journals, book chapters and conference proceedings.
                 </p>
                 <p>
                   A publishing website lives or dies on trust. Authors, readers, indexing bodies and institutional
@@ -148,41 +213,6 @@ export default function About() {
                 </Link>
               </Reveal>
             ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Governance */}
-      <section id="governance" className="scroll-mt-28 bg-paper py-20 sm:py-24">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-12">
-            <Reveal className="lg:col-span-5">
-              <SectionHead
-                eyebrow="Leadership & editorial governance"
-                title="How decisions get made — and who is accountable."
-                intro="Editorial authority sits with named editors, not with commercial teams. Governance is documented, conflicts are declared, and the integrity of the published record is the Editor-in-Chief's responsibility."
-              />
-              <Link to="/journals/the-journal#board" className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 hover:text-brand-700">
-                Meet the editorial board <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Reveal>
-            <div className="lg:col-span-7">
-              <div className="space-y-4">
-                {[
-                  ['Editorial independence', 'Editors decide what is published, on scientific merit. Commercial and services teams have no vote.'],
-                  ['Declared conflicts', 'Editors and reviewers declare competing interests and recuse where needed.'],
-                  ['Accountable record', 'The Editor-in-Chief is accountable for corrections, retractions and the integrity of the published record.'],
-                  ['Group-wide ethics', 'We align to COPE-style best practice across Trueline Research, Publishers and StartNet.'],
-                ].map(([t, b], i) => (
-                  <Reveal key={t} delay={i * 0.05}>
-                    <div className="rounded-3xl border border-line bg-canvas p-6">
-                      <h3 className="font-display text-[16px] font-semibold text-ink">{t}</h3>
-                      <p className="mt-1.5 text-[14px] leading-relaxed text-ink-soft">{b}</p>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
           </div>
         </Container>
       </section>

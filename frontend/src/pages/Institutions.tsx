@@ -7,10 +7,10 @@ export default function Institutions() {
   return (
     <>
       <PageHero
-        audience="Libraries · colleges · Gulf clients"
+        audience="Libraries · Colleges · Institutions"
         eyebrow="For institutions"
         title="Publish at indexing-ready, integrity-first standards."
-        intro="Institutional publishing, proceedings, library access and editorial partnerships — for colleges and universities, libraries, and Gulf institutions building research-publishing capability."
+        intro="Institutional publishing, proceedings, library access and editorial partnerships — for colleges and universities, libraries, and institutions building research-publishing capability."
         cta={{ label: 'Talk to us', to: '/contact#institution' }}
       />
 

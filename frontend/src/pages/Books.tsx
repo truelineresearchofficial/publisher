@@ -12,7 +12,7 @@ export default function Books() {
       <PageHero
         eyebrow="Books & proceedings"
         title="Scholarly books and conference proceedings."
-        intro="Peer-reviewed edited volumes, monographs and proceedings in the life sciences — with ISBNs, chapter-level DOIs and distribution to academic channels."
+        intro="Peer-reviewed edited volumes, monographs and proceedings across all academic disciplines — with ISBN registration, chapter-level DOIs and distribution to academic channels."
         cta={{ label: 'Propose a book or proceedings', to: '/contact#institution' }}
       />
 

@@ -18,7 +18,7 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <Wordmark tone="white" />
             <p className="mt-5 max-w-xs text-[15px] leading-relaxed text-white/55">
-              {BRAND.tagline} The biomedical and life-sciences scholarly publishing house of the Trueline Group —
+              {BRAND.tagline} The multidisciplinary academic publishing house of the Trueline Group —
               peer review, ethics and indexing transparency first.
             </p>
             <div className="mt-6 space-y-2.5 text-sm text-white/55">

@@ -9,6 +9,8 @@ import Ethics from './pages/Ethics'
 import Indexing from './pages/Indexing'
 import Books from './pages/Books'
 import AuthorServices from './pages/AuthorServices'
+import ServiceCategoryPage from './components/ServiceCategoryPage'
+import { AUTHOR_SERVICE_CATEGORIES } from './lib/authorServices'
 import Institutions from './pages/Institutions'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
@@ -43,6 +45,9 @@ export default function App() {
           <Route path="/indexing" element={<Indexing />} />
           <Route path="/books" element={<Books />} />
           <Route path="/author-services" element={<AuthorServices />} />
+          {AUTHOR_SERVICE_CATEGORIES.map((c) => (
+            <Route key={c.slug} path={c.route} element={<ServiceCategoryPage category={c} />} />
+          ))}
           <Route path="/institutions" element={<Institutions />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />

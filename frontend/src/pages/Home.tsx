@@ -69,7 +69,7 @@ function Hero() {
 
 function Pillars() {
   return (
-    <section className="bg-paper py-20 sm:py-24">
+    <section className="bg-paper pt-20 pb-8 sm:pt-24 sm:pb-8">
       <Container>
         <SectionHead
           eyebrow="What we stand for"
@@ -104,7 +104,7 @@ function Pillars() {
 
 function ServicesTeaser() {
   return (
-    <section className="bg-paper py-20 sm:py-24">
+    <section className="bg-paper pt-8 pb-20 sm:pt-8 sm:pb-24">
       <Container>
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
           <Reveal className="lg:col-span-5">

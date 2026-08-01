@@ -124,6 +124,56 @@ export default function Nav() {
 
 function MegaMenu({ item }: { item: NavItem }) {
   if (!item.columns) return null
+
+  // Wide variant: category boxes in a responsive grid (4 in the first row, 3 in
+  // the second) — no feature panel. Used by Author Services.
+  if (item.wideGrid) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -8 }}
+        transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute inset-x-0 top-full hidden border-b border-line bg-white/95 backdrop-blur-xl xl:block"
+      >
+        <div className="container-tl py-9">
+          <div className="grid grid-cols-4 gap-4">
+            {item.columns.map((col) => (
+              <div
+                key={col.heading}
+                className="flex h-full flex-col rounded-2xl border border-line bg-white p-5 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-lg"
+              >
+                {col.to ? (
+                  <Link
+                    to={col.to}
+                    className="mb-3 font-display text-sm font-bold text-ink transition-colors hover:text-brand-600"
+                  >
+                    {col.heading}
+                  </Link>
+                ) : (
+                  <h3 className="mb-3 font-display text-sm font-bold text-ink">{col.heading}</h3>
+                )}
+                <ul className="space-y-0.5">
+                  {col.items.map((leaf) => (
+                    <li key={leaf.label}>
+                      <Link
+                        to={leaf.to}
+                        className="group flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-[13.5px] font-medium text-ink-soft transition-colors hover:bg-canvas hover:text-brand-600"
+                      >
+                        {leaf.label}
+                        <ArrowRight className="h-3 w-3 -translate-x-1 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    )
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -8 }}
