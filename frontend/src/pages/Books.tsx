@@ -50,22 +50,17 @@ export default function Books() {
           <Reveal>
             <div className="grid gap-8 rounded-4xl border border-line bg-white p-8 shadow-card sm:p-10 lg:grid-cols-12 lg:items-center">
               <div className="lg:col-span-8">
-                <span className="eyebrow">Powered by the flywheel</span>
+                <span className="eyebrow">PUBLISHING EXCELLENCE</span>
                 <h2 className="display mt-4 text-[clamp(1.6rem,3vw,2.2rem)]">
-                  Every StartNet Bio Summit becomes a published, citable record.
+                  Transforming Research into Globally Recognized Publications
                 </h2>
                 <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-soft">
-                  Conference proceedings tie directly to StartNet's events — giving each summit lasting scholarly value
-                  and feeding the Trueline Group flywheel. Research generates the work, we credentialize it, and StartNet
-                  turns events into indexed proceedings.
+From manuscripts to books, journals, and conference proceedings, Trueline Publisher delivers ethical publishing, rigorous editorial support, DOI services, plagiarism screening, and indexing guidance to help researchers achieve global academic recognition.
                 </p>
-                <Link to="/about#group" className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 hover:text-brand-700">
-                  See how the group works <ArrowRight className="h-4 w-4" />
-                </Link>
               </div>
               <div className="lg:col-span-4">
                 <div className="rounded-3xl border border-line bg-canvas p-6">
-                  {['Edited volumes & monographs', 'Conference proceedings', 'ISBN & chapter DOIs', 'Library distribution'].map((t) => (
+                  {['Edited volumes & monographs','Peer-Reviewed Journals', 'Conference proceedings', 'ISBN & chapter DOIs', 'Scopus & Web of Science Guidance'].map((t) => (
                     <div key={t} className="flex items-center gap-2.5 border-b border-line py-2.5 text-[14px] text-ink-soft last:border-0">
                       <span className="h-1.5 w-1.5 rounded-full bg-brand-500" /> {t}
                     </div>

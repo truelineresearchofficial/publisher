@@ -37,7 +37,7 @@ export default function Nav() {
         onMouseLeave={() => setOpen(null)}
       >
         <div className="container-tl flex h-[68px] items-center justify-between gap-4">
-          <Link to="/" aria-label="Trueline Publishers home">
+          <Link to="/" aria-label="Trueline Publisher home">
             <Wordmark />
           </Link>
 

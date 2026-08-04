@@ -54,7 +54,7 @@ export default function About() {
   return (
     <>
       <PageHero
-        eyebrow="About Trueline Publishers"
+        eyebrow="About Trueline Publisher"
         title="A trust-led, multidisciplinary academic publisher."
         intro="We exist to convert research output into credibility. We lead with editorial standards, indexing transparency, peer-review integrity and credible people — because that is what lets institutions and authors trust what we publish."
         cta={{ label: 'Read our editorial standards', to: '/editorial-standards' }}
@@ -67,22 +67,27 @@ export default function About() {
             <Reveal className="lg:col-span-5">
               <img
                 src="https://drive.google.com/thumbnail?id=1SDQpMWYEwvXVfH9nH9vG8bNafOrTKUc7&sz=w1000"
-                alt="Dr. V. Nagaraj, Chief Executive Officer of Trueline Publishers"
+                alt="Dr. V. Nagaraj, Chief Executive Officer of Trueline Publisher"
                 className="w-full h-[450px] object-cover object-[center_20%] rounded-3xl shadow-lg"
               />
             </Reveal>
             <div className="lg:col-span-7">
-              <SectionHead eyebrow="Leadership" title="CEO Message" />
-              <p className="mt-5 font-display text-lg font-semibold text-ink">Dr. V. NAGARAJ</p>
+              <SectionHead eyebrow="Leadership" title="Founder Message" />
+              <p className="mt-6 font-display text-2xl font-semibold text-ink">
+                Dr. V. NAGARAJ
+              </p>
+
               <div className="prose-tl mt-4 max-w-2xl">
                 <p>
-                  With over 13 years of experience in academic publishing, research, and innovation, I founded Trueline Publisher with a vision to deliver ethical, high-quality, and globally recognized publishing solutions. We specialize in book publishing, Scopus and Web of Science-indexed research publications, and multidisciplinary journals across Engineering, Technology, Medical, Science, Management, Arts, and other disciplines.
+                  <strong>M.E., M.B.A., Ph.D. from Anna University and Post Doctorate Fellowship from University of South Florida (USA).</strong> With over <strong>13 years of experience</strong> in academic publishing, research, and innovation, I founded <strong>
+                    
+                    Trueline Publisher in 2019</strong> with a vision to deliver ethical, high-quality, and globally recognized publishing solutions. <strong>We specialize in book publishing, Scopus and Web of Science-indexed research publications, and multidisciplinary journals across Engineering, Technology, Medical, Science, Management, Arts, and other disciplines.</strong>
                 </p>
                 <p>
-                  Our commitment is to provide rigorous peer review, transparent editorial practices, and international publishing standards, while supporting researchers through academic profiling, research visibility, and global dissemination. We also collaborate with universities and academic institutions through international conferences, research partnerships, and institutional publishing programs to strengthen the global research ecosystem.
+                  Our commitment is to provide rigorous peer review, transparent editorial practices, and international publishing standards, while supporting researchers through academic profiling, research visibility, and global dissemination. <strong>We also collaborate with universities and academic institutions through international conferences, research partnerships, and institutional publishing programs to strengthen the global research ecosystem.</strong>
                 </p>
                 <p>
-                  Thank you for choosing Trueline Publisher. We are proud to be your trusted publishing partner in advancing research, innovation, and academic excellence worldwide.
+                  Thank you for approaching Trueline Publisher.<strong>We are proud to be your trusted publishing partner in advancing research, innovation, and academic excellence worldwide.</strong>
                 </p>
               </div>
               <div className="mt-6 flex items-center gap-3">
@@ -136,11 +141,11 @@ export default function About() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {IMPACT_STATS.map((s, i) => (
               <Reveal key={s.title} delay={(i % 3) * 0.06}>
-                <div className="flex h-full flex-col items-center rounded-3xl border border-line bg-white p-8 text-center shadow-card transition-all hover:-translate-y-1 hover:shadow-card-lg">
-                  <div className="font-display text-5xl font-bold text-ink">
+                <div className="flex h-full min-h-[240px] flex-col items-center justify-center rounded-3xl border border-line bg-white p-8 text-center shadow-card transition-all hover:-translate-y-1 hover:shadow-card-lg">
+                  <div className="bg-gradient-to-r from-[#00A99D] via-[#26BBB0] to-[#45B8FF] bg-clip-text font-display text-6xl font-extrabold text-transparent">
                     <CountUp value={s.value} suffix={s.suffix} />
                   </div>
-                  <p className="mt-3 text-[14px] leading-relaxed text-ink-soft">{s.title}</p>
+                  <p className="mt-4 text-[15px] font-semibold leading-normal text-ink">{s.title}</p>
                 </div>
               </Reveal>
             ))}
@@ -158,7 +163,7 @@ export default function About() {
             <div className="lg:col-span-7">
               <div className="prose-tl max-w-2xl">
                 <p>
-                  Trueline Publishers is the multidisciplinary academic publishing house of the Trueline Group,
+                  Trueline Publisher is the multidisciplinary academic publishing house of the Trueline Group,
                   supporting authors across engineering, technology, science, management, commerce, arts, education,
                   pharmacy, nursing, agriculture, humanities and the social sciences. Our job in the group is singular:
                   to credentialize research — turning credible work into peer-reviewed, indexed, citable publications
@@ -177,10 +182,10 @@ export default function About() {
               </div>
               <div className="mt-7 grid gap-3 sm:grid-cols-2">
                 {[
-                  { icon: ShieldCheck, t: 'Integrity-first', b: 'Trust signals lead; sales follow.' },
-                  { icon: Eye, t: 'Transparent', b: 'Honest indexing, open charges, clear policies.' },
-                  { icon: Scale, t: 'Firewalled', b: 'Services never influence editorial decisions.' },
-                  { icon: Users, t: 'Credible people', b: 'A real, named editorial board.' },
+                  { icon: ShieldCheck, t: 'Ethical Publishing', b: 'Publishing with integrity, transparency, and internationally accepted editorial standards.' },
+                  { icon: Eye, t: 'Global Visibility', b: 'Supporting DOI, indexing guidance, and worldwide research dissemination.' },
+                  { icon: Scale, t: 'Research Excellence', b: 'Empowering authors and institutions through quality publishing and scholarly communication.' },
+                  { icon: Users, t: 'Academic Partnerships', b: 'Collaborating with universities, conferences, and research institutions to advance innovation and knowledge.' },
                 ].map((x) => (
                   <div key={x.t} className="flex items-start gap-3 rounded-2xl border border-line bg-canvas p-4">
                     <x.icon className="mt-0.5 h-5 w-5 shrink-0 text-brand-500" />

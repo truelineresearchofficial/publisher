@@ -31,7 +31,7 @@ export default function AuthorServices() {
 
   return (
     <>
-      <section className="scroll-mt-28 bg-paper pb-16 pt-[120px] sm:pb-20">
+      <section className="scroll-mt-28 bg-paper pb-16 pt-[112px] sm:pb-20">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <Reveal>

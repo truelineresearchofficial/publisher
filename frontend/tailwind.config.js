@@ -15,18 +15,18 @@ export default {
         'ink-faint': '#76909C',
         line: '#E3ECEC',
         'line-2': '#D3E0E0',
-        // Trueline brand — scientific teal/aqua
+        // Trueline brand — scientific teal/aqua (primary accent #00A99D)
         brand: {
-          50: '#EAF7F4',
-          100: '#CFEDE7',
-          200: '#A0DBD0',
-          300: '#5FC3B5',
-          400: '#2CA897',
-          500: '#0E8C7F',
-          600: '#0A7167',
-          700: '#0A5A53',
-          800: '#0B4843',
-          900: '#0A3A36',
+          50: '#E6F7F5',
+          100: '#CCEFEB',
+          200: '#99DFD7',
+          300: '#5FCFC3',
+          400: '#26BBB0',
+          500: '#00A99D',
+          600: '#008C82',
+          700: '#00726A',
+          800: '#005B55',
+          900: '#00473F',
         },
         // Spectrum accents (for the magazine / flywheel motif)
         aqua: '#22C3C9',
@@ -52,7 +52,7 @@ export default {
         card: '0 1px 2px rgba(10,26,38,0.04), 0 12px 32px -12px rgba(10,26,38,0.12)',
         'card-lg': '0 1px 2px rgba(10,26,38,0.04), 0 30px 60px -24px rgba(10,26,38,0.20)',
         ring: '0 0 0 1px rgba(10,26,38,0.06)',
-        glow: '0 20px 60px -20px rgba(14,140,127,0.45)',
+        glow: '0 20px 60px -20px rgba(0,169,157,0.45)',
       },
       keyframes: {
         'fade-up': {

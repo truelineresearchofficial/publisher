@@ -9,7 +9,7 @@ import { GROUP } from '../lib/content'
 
 const NODES = [
   { ...GROUP[0], angle: -90, color: '#3E9BE8' },
-  { ...GROUP[1], angle: -18, color: '#0E8C7F' },
+  { ...GROUP[1], angle: -18, color: '#00A99D' },
   { ...GROUP[2], angle: 54, color: '#22C3C9' },
   { ...GROUP[3], angle: 126, color: '#2FB0A0' },
   { ...GROUP[4], angle: 198, color: '#5AA9E6' },
@@ -33,9 +33,14 @@ export default function Flywheel() {
         <svg viewBox="0 0 400 400" className="w-full">
           <defs>
             <linearGradient id="fwring" x1="0" y1="0" x2="400" y2="400" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stopColor="#0E8C7F" />
+              <stop offset="0" stopColor="#00A99D" />
               <stop offset="0.5" stopColor="#22C3C9" />
               <stop offset="1" stopColor="#3E9BE8" />
+            </linearGradient>
+            <linearGradient id="fwcore" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#F4FFFE" />
+              <stop offset="0.5" stopColor="#E6F8F7" />
+              <stop offset="1" stopColor="#D7F3F1" />
             </linearGradient>
           </defs>
 
@@ -70,15 +75,12 @@ export default function Flywheel() {
           })}
 
           {/* core */}
-          <circle cx={C} cy={C} r="48" fill="#0A1A26" />
-          <text x={C} y={C - 12} textAnchor="middle" className="fill-white" style={{ fontSize: 11, fontWeight: 600 }}>
+          <circle cx={C} cy={C} r="48" fill="url(#fwcore)" />
+          <text x={C} y={C - 6} textAnchor="middle" fill="#0F172A" style={{ fontSize: 11, fontWeight: 600 }}>
             TRUELINE
           </text>
-          <text x={C} y={C} textAnchor="middle" className="fill-white" style={{ fontSize: 11, fontWeight: 600 }}>
+          <text x={C} y={C + 9} textAnchor="middle" fill="#0F172A" style={{ fontSize: 11, fontWeight: 600 }}>
             GROUP
-          </text>
-          <text x={C} y={C + 15} textAnchor="middle" className="fill-white/60" style={{ fontSize: 5.5 }}>
-            Research • Publishing • Innovation
           </text>
 
           {/* nodes */}
@@ -106,15 +108,9 @@ export default function Flywheel() {
                   <div className="flex h-full w-full flex-col items-center justify-center text-center leading-tight">
                     <span
                       className="whitespace-normal break-words font-semibold text-ink"
-                      style={{ fontSize: 8, maxWidth: 64 }}
+                      style={{ fontSize: 10, maxWidth: 64 }}
                     >
                       {n.name}
-                    </span>
-                    <span
-                      className="mt-0.5 whitespace-normal break-words text-ink-faint"
-                      style={{ fontSize: 7, maxWidth: 64 }}
-                    >
-                      {n.short}
                     </span>
                   </div>
                 </foreignObject>
@@ -123,13 +119,7 @@ export default function Flywheel() {
           })}
         </svg>
 
-        {/* feed-in / scale-out labels */}
-        <div className="absolute -top-2 left-1/2 -translate-x-1/2 rounded-full border border-line bg-white px-3 py-1 text-[11px] font-semibold text-ink-soft shadow-card">
-          Research output ↓
-        </div>
-        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-full border border-line bg-white px-3 py-1 text-[11px] font-semibold text-ink-soft shadow-card">
-          ↑ Events → proceedings
-        </div>
+
       </div>
 
       {/* Detail panel */}

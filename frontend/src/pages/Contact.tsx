@@ -98,7 +98,7 @@ export default function Contact() {
 
   return (
     <>
-      <section className="bg-paper pt-[118px] pb-16 sm:pb-20">
+      <section className="bg-paper pt-[112px] pb-16 sm:pb-20">
         <Container>
           <div className="grid gap-10 lg:grid-cols-12">
             {/* Left — direct contact channels (lg:pt-10 aligns this heading's top edge
@@ -253,7 +253,7 @@ export default function Contact() {
                       <span className="text-[13px] font-medium text-ink-soft">Organization</span>
                       <input
                         type="text"
-                        placeholder="Your company or institution"
+                        placeholder="Your Company or Institution"
                         value={values.organization ?? ''}
                         onChange={(e) => set('organization', e.target.value)}
                         className={`mt-1.5 ${FIELD_BASE}`}
@@ -297,17 +297,17 @@ export default function Contact() {
       <section className="bg-canvas py-10 sm:py-14">
         <Container>
           <div className="text-center">
-            <p className="text-lg font-semibold uppercase tracking-[0.25em] text-brand-600">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-brand-600">
               - Reach us
             </p>
-            <h2 className="mt-3 font-display text-5xl font-bold text-ink">
+            <h2 className="mt-3 font-display text-4xl font-bold text-ink">
               Our Offices
             </h2>
           </div>
 
           {/* Headquarters */}
           <Reveal>
-            <h3 className="mt-8 text-center font-display text-3xl font-semibold text-ink">
+            <h3 className="mt-8 text-center font-display text-2xl font-semibold text-ink">
               Headquarters
             </h3>
           </Reveal>
@@ -320,12 +320,12 @@ export default function Contact() {
                   <MapPin className="h-5 w-5" />
                 </div>
 
-                <p className="font-display text-2xl font-bold text-ink">
+                <p className="font-display text-xl font-bold text-ink">
                   {hq.city}
                 </p>
               </div>
 
-              <p className="mx-auto mt-3 max-w-lg text-lg leading-8 text-ink-soft">
+              <p className="mx-auto mt-3 max-w-lg text-base leading-8 text-ink-soft">
                 {hq.detail}
               </p>
 
@@ -345,7 +345,7 @@ export default function Contact() {
           {branches.length > 0 && (
             <>
               <Reveal>
-                <h3 className="mt-8 text-center font-display text-3xl font-semibold text-ink">Branch Offices</h3>
+                <h3 className="mt-8 text-center font-display text-2xl font-semibold text-ink">Branch Offices</h3>
               </Reveal>
               <div className="mx-auto mt-5 grid max-w-6xl grid-cols-1 justify-center gap-5 sm:grid-cols-2">
                 {branches.map((o, i) => (
@@ -358,13 +358,13 @@ export default function Contact() {
                           <MapPin className="h-5 w-5" />
                         </div>
 
-                        <p className="font-display text-2xl font-semibold text-ink">
+                        <p className="font-display text-xl font-semibold text-ink">
                           {o.city}
                         </p>
                       </div>
 
                       {/* Subtitle */}
-                      <p className="mt-3 text-xl font-semibold text-brand-600">
+                      <p className="mt-3 text-base font-semibold text-brand-600">
                         {o.subtitle}
                       </p>
 

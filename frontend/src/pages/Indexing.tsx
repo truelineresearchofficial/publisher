@@ -4,9 +4,14 @@ import { Container, Reveal, SectionHead } from '../lib/ui'
 export default function Indexing() {
   return (
     <>
-      <section className="bg-paper pt-[140px] pb-20 sm:pb-24">
+      <section className="bg-paper pt-[112px] pb-20 sm:pb-24">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-12">
+          <SectionHead
+            eyebrow="Indexing & Abstracting"
+            title="Indexing & Abstracting"
+            intro="Helping authors and institutions improve research discoverability through trusted indexing guidance, metadata standards, DOI integration, Crossref registration, ORCID support, and international visibility."
+          />
+          <div className="mt-12 grid gap-10 lg:grid-cols-12">
             <Reveal className="lg:col-span-4">
               <SectionHead
                 eyebrow="Where we stand today"

@@ -1,4 +1,4 @@
-// Brand wordmark + scholarly SVG motifs for Trueline Publishers. The logomark
+// Brand wordmark + scholarly SVG motifs for Trueline Publisher. The logomark
 // is the shared Trueline "true line": a clean signal that crests into a node —
 // precision meeting discovery. The wordmark reads "Publishers" to mark the
 // publishing arm of the group, while staying visually identical to the family.
@@ -8,7 +8,7 @@ export function Logomark({ className = 'h-9 w-9', dark = false }: { className?: 
     <svg viewBox="0 0 64 64" className={className} aria-hidden="true">
       <defs>
         <linearGradient id="tlspec" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#0E8C7F" />
+          <stop offset="0" stopColor="#00A99D" />
           <stop offset="0.55" stopColor="#22C3C9" />
           <stop offset="1" stopColor="#3E9BE8" />
         </linearGradient>
@@ -44,16 +44,16 @@ export function JournalMark({ className = '' }: { className?: string }) {
     <svg viewBox="0 0 200 200" className={className} fill="none" aria-hidden="true">
       <defs>
         <linearGradient id="jm" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#0E8C7F" />
+          <stop offset="0" stopColor="#00A99D" />
           <stop offset="0.55" stopColor="#22C3C9" />
           <stop offset="1" stopColor="#3E9BE8" />
         </linearGradient>
       </defs>
       <path d="M100 52 C78 40 52 40 32 50 V150 C52 140 78 140 100 152" stroke="url(#jm)" strokeWidth="2.4" opacity="0.85" />
       <path d="M100 52 C122 40 148 40 168 50 V150 C148 140 122 140 100 152" stroke="url(#jm)" strokeWidth="2.4" opacity="0.6" />
-      <line x1="100" y1="52" x2="100" y2="152" stroke="#0E8C7F" strokeWidth="2" opacity="0.4" />
+      <line x1="100" y1="52" x2="100" y2="152" stroke="#00A99D" strokeWidth="2" opacity="0.4" />
       {[68, 82, 96, 110].map((y) => (
-        <line key={`l${y}`} x1="44" y1={y} x2="88" y2={y - 4} stroke="#0E8C7F" strokeWidth="1.3" opacity="0.25" />
+        <line key={`l${y}`} x1="44" y1={y} x2="88" y2={y - 4} stroke="#00A99D" strokeWidth="1.3" opacity="0.25" />
       ))}
       {[68, 82, 96, 110].map((y) => (
         <line key={`r${y}`} x1="112" y1={y - 4} x2="156" y2={y} stroke="#3E9BE8" strokeWidth="1.3" opacity="0.22" />
@@ -82,7 +82,7 @@ export function HelixLines({ className = '' }: { className?: string }) {
       />
       {rungs.map((_, i) => {
         const y = 18 + i * 40
-        return <line key={i} x1="55" y1={y} x2="165" y2={y} stroke="#0E8C7F" strokeWidth="1.4" opacity="0.18" />
+        return <line key={i} x1="55" y1={y} x2="165" y2={y} stroke="#00A99D" strokeWidth="1.4" opacity="0.18" />
       })}
     </svg>
   )
@@ -92,7 +92,7 @@ export function HelixLines({ className = '' }: { className?: string }) {
 export function Molecule({ className = '' }: { className?: string }) {
   return (
     <svg viewBox="0 0 200 200" className={className} fill="none" aria-hidden="true">
-      <g stroke="#0E8C7F" strokeWidth="1.2" opacity="0.5">
+      <g stroke="#00A99D" strokeWidth="1.2" opacity="0.5">
         <line x1="40" y1="60" x2="100" y2="40" />
         <line x1="100" y1="40" x2="160" y2="70" />
         <line x1="100" y1="40" x2="100" y2="110" />
@@ -108,7 +108,7 @@ export function Molecule({ className = '' }: { className?: string }) {
         [50, 150, 5],
         [160, 140, 6],
       ].map(([x, y, r], i) => (
-        <circle key={i} cx={x} cy={y} r={r} fill={i % 2 ? '#22C3C9' : '#0E8C7F'} opacity="0.85" />
+        <circle key={i} cx={x} cy={y} r={r} fill={i % 2 ? '#22C3C9' : '#00A99D'} opacity="0.85" />
       ))}
     </svg>
   )

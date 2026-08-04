@@ -1,21 +1,21 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Quote, Sparkles } from 'lucide-react'
-import { Container, Reveal, SectionHead, Eyebrow } from '../lib/ui'
+import { ArrowRight, Quote } from 'lucide-react'
+import { Container, Reveal, SectionHead } from '../lib/ui'
 import { JournalMark, HelixLines } from '../components/Marks'
 import Flywheel from '../components/Flywheel'
+import LogoMarquee from '../components/LogoMarquee'
 import {
   PILLARS,
   AUTHOR_SERVICES,
-  INSTITUTION_TRACKS,
 } from '../lib/content'
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <LogoMarquee />
       <Pillars />
       <ServicesTeaser />
-      <InstitutionsTeaser />
       <GroupFlywheel />
     </>
   )
@@ -23,39 +23,32 @@ export default function Home() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-canvas pt-[132px]">
+    <section className="relative overflow-hidden bg-canvas pt-[80px]">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-70" />
-      <div className="pointer-events-none absolute -right-24 -top-10 hidden w-[520px] opacity-60 lg:block">
+      <div className="pointer-events-none absolute -right-16 top-12 hidden w-[396px] opacity-[0.55] sm:block">
         <JournalMark className="h-full w-full animate-float" />
       </div>
       <div className="pointer-events-none absolute right-[12%] top-24 hidden h-[440px] w-[180px] opacity-40 xl:block">
         <HelixLines className="h-full w-full" />
       </div>
 
-      <Container className="relative pb-20 pt-10">
+      <Container className="relative pb-6 pt-2">
         <div className="max-w-3xl">
-          <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3.5 py-1.5 text-xs font-semibold text-brand-700">
-              <Sparkles className="h-3.5 w-3.5" /> The publishing arm of the Trueline Group
-            </span>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <Eyebrow className="mt-6">Integrity-first scholarly publishing</Eyebrow>
-          </Reveal>
           <Reveal delay={0.08}>
-            <h1 className="display mt-5 text-[clamp(2.6rem,6vw,4.6rem)] text-balance">
-              Where quality research is <span className="text-spectrum">published, indexed, and discovered.</span>
+            <h1 className="display text-[clamp(2.1rem,5vw,3.7rem)] font-semibold leading-[1.05] text-balance">
+              Where quality research is{" "}
+              <span className="text-spectrum">
+                published, indexed, and discovered.
+              </span>
             </h1>
           </Reveal>
           <Reveal delay={0.12}>
-            <p className="mt-7 max-w-2xl text-xl leading-relaxed text-ink-soft text-pretty">
-              Trueline Publishers is an International Academic Publisher committed to advancing Research across
-              Biomedical Sciences, Life Sciences, Engineering, Technology, Management, Humanities, Social Sciences, and
-              many other Disciplines — through Rigorous Peer Review, Ethical Bublishing, and Global Visibility.
+            <p className="mt-5 max-w-2xl text-base sm:text-lg leading-7 text-ink-soft text-pretty">
+              Trueline Publisher is an International Academic Publisher committed to advancing Research across Biomedical Sciences, Life Sciences, Engineering, Technology, Management, Humanities, Social Sciences, and Multidisciplinary fields through Rigorous Peer Review, Ethical Publishing, Scopus-Indexed and Web of Science Journals (SCI, SCIE, ESCI, AHCI, PubMed, T&R), Books, Conference Proceedings, and Global Research Visibility.
             </p>
           </Reveal>
           <Reveal delay={0.16}>
-            <div className="mt-9 flex flex-wrap items-center gap-3">
+            <div className="mt-6 flex flex-wrap items-center gap-3">
               <Link to="/contact" className="btn-brand h-12 px-7 text-[15px]">
                 Contact Us <ArrowRight className="h-4 w-4" />
               </Link>
@@ -147,41 +140,6 @@ function ServicesTeaser() {
   )
 }
 
-function InstitutionsTeaser() {
-  return (
-    <section className="bg-canvas py-20 sm:py-24">
-      <Container>
-        <SectionHead
-          align="center"
-          eyebrow="For institutions"
-          title="Built for universities, institutions and libraries."
-          intro="Institutional publishing, conference proceedings, editorial partnerships and open-access library services — for universities, colleges, research institutions, hospitals, libraries, government organisations, industry researchers and academic societies, run to indexing and integrity standards."
-        />
-        <div className="mt-12 flex flex-wrap justify-center gap-6">
-          {INSTITUTION_TRACKS.filter((t) => t.id !== 'gulf').map((t, i) => (
-            <Reveal
-              key={t.id}
-              delay={i * 0.05}
-              className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]"
-            >
-              <Link
-                to={`/institutions#${t.id}`}
-                className="group flex h-full flex-col rounded-3xl border border-line bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-card"
-              >
-                <h3 className="font-display text-[17px] font-semibold text-ink group-hover:text-brand-700">{t.name}</h3>
-                <p className="mt-2 flex-1 text-[14px] leading-relaxed text-ink-soft">{t.body}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
-                  Learn more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-      </Container>
-    </section>
-  )
-}
-
 function GroupFlywheel() {
   return (
     <section className="relative overflow-hidden bg-paper py-20 sm:py-24">
@@ -190,7 +148,7 @@ function GroupFlywheel() {
           align="center"
           eyebrow="The Trueline Group flywheel"
           title="Five organisations, one connected research and publishing ecosystem."
-          intro="Trueline Research, Trueline Publishers, Trueline Spectrum, Jaeid and StartNet work together as a single ecosystem: Trueline Research produces and supports scholarly work, Trueline Publishers and Jaeid bring it through peer review into publication, Trueline Spectrum shares it with wider audiences, and StartNet connects it to innovation, events and collaboration."
+          intro="Trueline Research, Trueline Publisher, Trueline Spectrum, Jaeid and StartNet work together as a single ecosystem: Trueline Research produces and supports scholarly work, Trueline Publisher and Jaeid bring it through peer review into publication, Trueline Spectrum shares it with wider audiences, and StartNet connects it to innovation, events and collaboration."
         />
         <div className="mt-14">
           <Flywheel />

@@ -6,7 +6,7 @@ export default function EditorialStandards() {
   return (
     <>
       {/* The model */}
-      <section className="bg-paper pt-[140px] pb-20 sm:pb-24">
+      <section className="bg-paper pt-[112px] pb-20 sm:pb-24">
         <Container>
           <div className="grid gap-10 lg:grid-cols-12">
             <Reveal className="lg:col-span-5">

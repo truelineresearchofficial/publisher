@@ -20,12 +20,12 @@ export default function PageHero({
   children?: ReactNode
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-line bg-canvas pt-[120px]">
+    <section className="relative overflow-hidden border-b border-line bg-canvas pt-[96px]">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-60" />
       <div className="pointer-events-none absolute -right-16 top-12 hidden w-[440px] opacity-[0.55] sm:block">
         <JournalMark className="h-full w-full animate-float" />
       </div>
-      <Container className="relative pb-16 pt-8">
+      <Container className="relative pb-16 pt-4">
         <div className="max-w-3xl">
           {audience && (
             <Reveal>

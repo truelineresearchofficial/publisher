@@ -5,7 +5,7 @@ import { JournalMark } from '../components/Marks'
 
 export default function NotFound() {
   return (
-    <section className="grid min-h-[70vh] place-items-center bg-canvas pt-[120px]">
+    <section className="grid min-h-[70vh] place-items-center bg-canvas pt-[112px]">
       <Container className="text-center">
         <div className="mx-auto w-28 opacity-70">
           <JournalMark className="h-full w-full" />

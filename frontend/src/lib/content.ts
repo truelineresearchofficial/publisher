@@ -1,5 +1,5 @@
 // ──────────────────────────────────────────────────────────────────────────
-// Trueline Publishers — single source of truth for site copy & data.
+// Trueline Publisher — single source of truth for site copy & data.
 //
 // TRUST-LED, INTEGRITY-SAFE LANGUAGE ONLY. This is a scholarly publisher's
 // website: a trust instrument first, a marketing site second.
@@ -16,7 +16,7 @@
 // ──────────────────────────────────────────────────────────────────────────
 
 export const BRAND = {
-  name: 'Trueline Publishers',
+  name: 'Trueline Publisher',
   // Tagline option chosen from the blueprint:
   tagline: 'Integrity-first, multidisciplinary academic publishing.',
   promise: 'Where research across every discipline is published, indexed, and read.',
@@ -83,8 +83,6 @@ export const NAV: NavItem[] = [
         heading: 'The publishing house',
         items: [
           { label: 'Who we are', to: '/about#who', note: 'Mission & multidisciplinary focus' },
-          { label: 'Leadership & editorial governance', to: '/about#governance', note: 'How decisions are made' },
-          { label: 'The Trueline Group', to: '/about#group', note: 'Research · Publishers · StartNet' },
           { label: 'Contact editorial', to: '/contact', note: 'Talk to the editorial office' },
         ],
       },
@@ -93,7 +91,6 @@ export const NAV: NavItem[] = [
         audience: 'The trust layer',
         items: [
           { label: 'Editorial standards & peer review', to: '/editorial-standards', note: 'Our most important page' },
-          { label: 'Publication ethics & integrity', to: '/ethics', note: 'COPE-aligned, malpractice statement' },
           { label: 'Indexing & abstracting', to: '/indexing', note: 'Honest status + roadmap' },
         ],
       },
@@ -114,12 +111,12 @@ export const NAV: NavItem[] = [
     to: '/institutions',
     columns: [
       {
-        heading: 'Libraries, colleges & Gulf clients',
+        heading: 'Universities & Academic Institutions',
         items: [
           { label: 'Overview', to: '/institutions#overview' },
           { label: 'For colleges & universities', to: '/institutions#colleges', note: 'Institutional publishing & training' },
-          { label: 'Library & access', to: '/institutions#library', note: 'Subscriptions & open access' },
           { label: 'Editorial partnerships', to: '/institutions#partnerships', note: 'White-label / co-published journals' },
+          { label: 'Institutional Highlights', to: '/institutions#highlights', note: 'Comprehensive institutional solutions' },
         ],
       },
     ],
@@ -147,10 +144,10 @@ export const NAV: NavItem[] = [
 
 export const GROUP_LINKS: { label: string; href: string }[] = [
   { label: 'Trueline Research', href: 'https://truelineresearch.in/' },
-  { label: 'Trueline Publishers', href: 'https://truelinepublisher.in/' },
+  { label: 'Trueline Publisher', href: 'https://truelinepublisher.in/' },
   { label: 'Trueline Spectrum', href: 'https://www.truelinespectrum.in/' },
-  { label: 'JAEID', href: 'https://www.jaeid.com/' },
-  { label: 'StartNet', href: 'https://startnetx.in/' },
+  { label: 'Jaeid Journals', href: 'https://www.jaeid.com/' },
+  { label: 'StartNet Ventures', href: 'https://startnetx.in/' },
 ]
 
 // ── Positioning: the three message pillars (every page maps to one) ─────────
@@ -265,41 +262,41 @@ export const GROUP = [
     id: 'research',
     name: 'Trueline Research',
     short: 'Generates',
-    role: 'Generates the output',
-    body: 'Research enablement and CRO-lite services supporting biomedical sciences, life sciences, engineering, technology, management, humanities, and multidisciplinary research through mentoring, biostatistics, bioinformatics, academic consulting, and institutional Centre-of-Excellence programs.',
-    output: 'Generates credible research, manuscripts, datasets, and innovation.',
+    role: 'Research & Innovation',
+    body: 'Delivering research consulting, product development support, AI solutions, data analytics, Centre of Excellence programs, and innovation services for academia, startups, and industry.',
+    output: 'Accelerating research, innovation, and technology development.',
   },
   {
     id: 'publishers',
-    name: 'Trueline Publishers',
+    name: 'Trueline Publisher',
     short: 'Credentializes',
-    role: 'Credentializes it',
-    body: 'Integrity-first academic publishing through peer-reviewed journals, books, conference proceedings, Trueline Spectrum, DOI support, editorial excellence, indexing guidance, and professional publishing services.',
-    output: 'Builds credibility, global visibility, indexing, and long-term publishing value.',
+    role: 'Academic Publishing House',
+    body: 'Providing ethical publishing through peer-reviewed journals, books, conference proceedings, editorial services, DOI support, plagiarism screening, and indexing guidance.',
+    output: 'Building academic credibility and global visibility.',
   },
   {
     id: 'spectrum',
     name: 'Trueline Spectrum',
     short: 'Amplifies',
-    role: 'Amplifies knowledge',
-    body: 'A platform that promotes research visibility through articles, news, academic insights, interviews, institutional stories, conference highlights, and scientific communication.',
-    output: 'Expands research impact and community engagement.',
+    role: 'Monthly Research Magazine',
+    body: 'A monthly digital magazine featuring research, education, technology, startups, industry insights, expert articles, interviews, success stories, and emerging innovations.',
+    output: 'Connecting ideas, knowledge, and innovation.',
   },
   {
-    id: 'jaeid',
-    name: 'Jaeid',
+    id: 'jaeid Journals',
+    name: 'Jaeid Journals',
     short: 'Publishes',
-    role: 'Peer-reviewed journal',
-    body: 'Jaeid is a peer-reviewed international journal publishing original research, reviews and case studies across biomedical, life sciences and multidisciplinary fields through a rigorous double-blind review process.',
-    output: 'A credible, citable journal built on ethical peer review and global accessibility.',
+    role: 'Peer-Reviewed Journal',
+    body: 'Publishing high-quality original research, reviews, and case studies across AI, biomedical sciences, life sciences, engineering, technology, and multidisciplinary research through a rigorous peer-review process.',
+    output: 'Advancing scientific excellence through ethical publishing.',
   },
   {
-    id: 'startnet',
-    name: 'StartNet',
+    id: 'startnet  Ventures',
+    name: 'StartNet Ventures',
     short: 'Innovates',
-    role: 'Drives innovation',
-    body: 'Innovation ecosystem connecting startups, researchers, academic institutions, incubation centres, conferences, hackathons, industry collaborations, and entrepreneurship initiatives.',
-    output: 'Converts ideas into collaborations, events, and impactful research outcomes.',
+    role: 'Startup Growth Platform',
+    body: 'Supporting startups with incubation, acceleration, mentoring, funding readiness, innovation programs, industry partnerships, networking, and business growth opportunities.',
+    output: 'Empowering startups to innovate, scale, and succeed.',
   },
 ]
 
@@ -342,34 +339,6 @@ export const REVIEW_FACTS = [
   { label: 'Reviewers per manuscript', value: '≥ 2 independent' },
   { label: 'First-decision target', value: '6–8 weeks' },
   { label: 'Decision basis', value: 'Scientific merit only' },
-]
-
-// ── Publication ethics & integrity (COPE-aligned) ───────────────────────────
-export const ETHICS_AREAS = [
-  {
-    title: 'Authorship & contribution',
-    body: 'Authorship reflects substantial contribution. Ghost, gift and guest authorship are prohibited; contributions and corresponding authors are declared.',
-  },
-  {
-    title: 'Conflicts of interest',
-    body: 'Authors, reviewers and editors declare financial and non-financial competing interests. Editors with a conflict recuse from handling the manuscript.',
-  },
-  {
-    title: 'Plagiarism & originality',
-    body: 'All submissions are screened for similarity and duplicate publication. Manuscripts must be original and not under consideration elsewhere.',
-  },
-  {
-    title: 'Data integrity & availability',
-    body: 'Data and image manipulation are prohibited. Authors are expected to provide data-availability statements and share data where ethical and feasible.',
-  },
-  {
-    title: 'AI-use disclosure',
-    body: 'Use of generative AI in research or writing must be disclosed. AI tools cannot be listed as authors and cannot be held accountable for the work.',
-  },
-  {
-    title: 'Corrections & retractions',
-    body: 'We follow COPE-style processes for corrections, expressions of concern and retractions, with a transparent, documented complaints procedure.',
-  },
 ]
 
 // ── Indexing & abstracting (honest, labelled roadmap) ───────────────────────
@@ -494,12 +463,6 @@ export const INSTITUTION_TRACKS = [
     points: ['Institutional & departmental publishing', 'Proceedings for campus events', 'Research-methods & publishing training'],
   },
   {
-    id: 'library',
-    name: 'Library & access',
-    body: 'Open-access by default, with clear licensing, subscription options for selected content, and discovery-system-friendly metadata.',
-    points: ['Open access · CC BY 4.0', 'Clean MARC / metadata feeds', 'Discovery & link-resolver support'],
-  },
-  {
     id: 'partnerships',
     name: 'Editorial partnerships',
     body: 'White-label and co-published journals for institutions that want their own title built and run to indexing and integrity standards.',
@@ -507,15 +470,60 @@ export const INSTITUTION_TRACKS = [
   },
 ]
 
+export const INSTITUTION_HIGHLIGHTS = [
+  {
+    id: 'conferences',
+    name: 'International Conferences',
+    body: 'Organizing national and international conferences that promote academic collaboration and knowledge exchange.',
+  },
+  {
+    id: 'publications',
+    name: 'Research Publications',
+    body: 'Supporting Scopus, Web of Science, peer-reviewed journals, books, conference proceedings, and editorial services.',
+  },
+  {
+    id: 'guidance',
+    name: 'Student Research Guidance',
+    body: 'Mentoring undergraduate, postgraduate, and research scholars with project development and publication support.',
+  },
+  {
+    id: 'faculty',
+    name: 'Faculty Development',
+    body: 'Faculty Development Programs (FDPs), AI workshops, research training, and professional skill enhancement.',
+  },
+  {
+    id: 'accreditation',
+    name: 'Accreditation & Ranking',
+    body: 'Supporting NAAC, NBA, NIRF, QS documentation, academic quality, and institutional rankings.',
+  },
+  {
+    id: 'innovation',
+    name: 'Innovation & IPR',
+    body: 'Patents, copyrights, trademarks, technology transfer, and innovation ecosystem development.',
+  },
+  {
+    id: 'excellence',
+    name: 'Centre of Excellence',
+    body: 'Planning and establishing multidisciplinary Centres of Excellence aligned with industry and research.',
+  },
+  {
+    id: 'impact',
+    name: 'Research Impact',
+    body: 'Improving research visibility through ethical publishing, indexing guidance, citations, and global collaborations.',
+  },
+  {
+    id: 'industry',
+    name: 'Industry Collaboration',
+    body: 'Building partnerships between academia and industry through consultancy, internships, innovation projects, research initiatives, and technology transfer.',
+  },
+]
+
 // ── Resources / Ethics (the policy library) ─────────────────────────────────
 export const POLICIES = [
   { id: 'authors', title: 'Author resources & templates', body: 'Manuscript templates, reporting checklists, cover-letter and declaration forms.' },
   { id: 'reviewers', title: 'Reviewer guidelines & join the pool', body: 'How we review, what we expect of reviewers, and a form to join the reviewer and editorial pool.' },
-  { id: 'ethics', title: 'Publication ethics & malpractice statement', body: 'Our full COPE-aligned ethics framework and malpractice statement.', to: '/ethics' },
   { id: 'access', title: 'Open access, copyright & licensing', body: 'CC BY 4.0 by default; authors retain copyright. Licensing and reuse terms in full.' },
   { id: 'archiving', title: 'Archiving & preservation policy', body: 'Digital-preservation arrangement (LOCKSS/CLOCKSS or equivalent) for long-term access.' },
-  { id: 'corrections', title: 'Corrections, retractions & complaints', body: 'How we handle errors, expressions of concern, retractions and reader complaints.' },
-  { id: 'ai', title: 'AI-use & data-integrity disclosure', body: 'Disclosure requirements for generative AI and standards for data and image integrity.' },
   { id: 'faq', title: 'FAQ & help', body: 'Answers for authors, reviewers, readers and institutions — and how to reach support.' },
 ]
 
@@ -543,7 +551,7 @@ export const FOOTER_COLS = [
     heading: 'Trueline Group',
     links: [
       { label: 'Trueline Research', to: '/about#group' },
-      { label: 'Trueline Publishers', to: '/' },
+      { label: 'Trueline Publisher', to: '/' },
       { label: 'StartNet', to: '/about#group' },
       { label: 'Trueline Spectrum', to: '/spectrum' },
     ],
@@ -552,7 +560,6 @@ export const FOOTER_COLS = [
     heading: 'Standards',
     links: [
       { label: 'Editorial standards', to: '/editorial-standards' },
-      { label: 'Publication ethics', to: '/ethics' },
       { label: 'Indexing & abstracting', to: '/indexing' },
       { label: 'Open access & archiving', to: '/resources#archiving' },
     ],

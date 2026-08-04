@@ -23,7 +23,7 @@ export default function CTABand() {
                 </h2>
                 <p className="mt-4 max-w-md text-[15px] leading-relaxed text-white/65">
                   Whether your work is in medicine, engineering, technology, management, humanities, education or social
-                  sciences, Trueline Publishers provides professional publishing solutions to help your research reach a
+                  sciences, Trueline Publisher provides professional publishing solutions to help your research reach a
                   global audience.
                 </p>
               </div>

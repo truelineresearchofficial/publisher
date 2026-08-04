@@ -5,7 +5,6 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
 import EditorialStandards from './pages/EditorialStandards'
-import Ethics from './pages/Ethics'
 import Indexing from './pages/Indexing'
 import Books from './pages/Books'
 import AuthorServices from './pages/AuthorServices'
@@ -41,7 +40,6 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/editorial-standards" element={<EditorialStandards />} />
-          <Route path="/ethics" element={<Ethics />} />
           <Route path="/indexing" element={<Indexing />} />
           <Route path="/books" element={<Books />} />
           <Route path="/author-services" element={<AuthorServices />} />

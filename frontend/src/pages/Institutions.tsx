@@ -1,16 +1,16 @@
 import { Check } from 'lucide-react'
 import { Container, Reveal, SectionHead } from '../lib/ui'
 import PageHero from '../components/PageHero'
-import { INSTITUTION_TRACKS } from '../lib/content'
+import { INSTITUTION_TRACKS, INSTITUTION_HIGHLIGHTS } from '../lib/content'
 
 export default function Institutions() {
   return (
     <>
       <PageHero
-        audience="Libraries · Colleges · Institutions"
+        audience="Universities · Colleges · Institutions"
         eyebrow="For institutions"
         title="Publish at indexing-ready, integrity-first standards."
-        intro="Institutional publishing, proceedings, library access and editorial partnerships — for colleges and universities, libraries, and institutions building research-publishing capability."
+        intro="Institutional publishing, proceedings and editorial partnerships — for colleges, universities and academic institutions building research-publishing capability."
         cta={{ label: 'Talk to us', to: '/contact#institution' }}
       />
 
@@ -39,6 +39,29 @@ export default function Institutions() {
                       ))}
                     </div>
                   </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section id="highlights" className="scroll-mt-28 bg-canvas py-20 sm:py-24">
+        <Container>
+          <SectionHead
+            eyebrow="Institutional highlights"
+            title="Institutional Highlights"
+            intro="Comprehensive solutions that empower universities, colleges, and academic institutions to strengthen research, innovation, and academic excellence."
+          />
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {INSTITUTION_HIGHLIGHTS.map((h, i) => (
+              <Reveal key={h.id} delay={i * 0.06}>
+                <div className="flex h-full flex-col rounded-3xl border border-line bg-white p-7 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-lg">
+                  <h3 className="flex items-baseline gap-3 font-display text-lg font-semibold text-ink">
+                    <span className="text-sm font-semibold tracking-widest text-brand-500">0{i + 1}</span>
+                    {h.name}
+                  </h3>
+                  <p className="mt-2 flex-1 text-[14px] leading-relaxed text-ink-soft">{h.body}</p>
                 </div>
               </Reveal>
             ))}
