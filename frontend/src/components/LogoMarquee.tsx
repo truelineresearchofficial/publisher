@@ -60,8 +60,6 @@ const LARGE_LOGO_SIZES: Record<string, string> = {
   Elsevier: 'max-w-[190px] max-h-[85px]',
   'Springer Nature': 'max-w-[190px] max-h-[85px]',
   IEEE: 'max-w-[180px] max-h-[80px]',
-  'Taylor & Francis': 'max-w-[190px] max-h-[85px]',
-  ACM: 'max-w-[180px] max-h-[80px]',
   'IET Journals': 'max-w-[185px] max-h-[82px]',
   'Inderscience Publishers': 'max-w-[190px] max-h-[85px]',
   Scopus: 'max-w-[200px] max-h-[90px]',
@@ -69,19 +67,31 @@ const LARGE_LOGO_SIZES: Record<string, string> = {
 
 const DEFAULT_LOGO_SIZE = 'max-w-[140px] max-h-[55px]'
 
+// These three read much smaller than the rest, so they get a dedicated wider
+// slot and larger max dimensions. (Their source PNGs were also cropped to
+// remove opaque white padding — see public/logos/.) Full class strings so the
+// Tailwind JIT compiler picks them up.
+const BIG_SLOT_LOGOS = new Set(['Taylor & Francis', 'ACM', 'De Gruyter'])
+const BIG_SLOT = 'h-[80px] w-[220px]'
+const BIG_SLOT_IMG = 'max-w-[210px] max-h-[76px]'
+const DEFAULT_SLOT = 'h-[70px] w-[160px]'
+
 function LogoItem({ logo, hidden }: { logo: Logo; hidden: boolean }) {
   const [failed, setFailed] = useState(false)
 
   // Missing/failed file: render nothing (no text, no broken-image icon).
   if (failed) return null
 
-  const sizeClass = LARGE_LOGO_SIZES[logo.name] ?? DEFAULT_LOGO_SIZE
+  const isBig = BIG_SLOT_LOGOS.has(logo.name)
+  const slotClass = isBig ? BIG_SLOT : DEFAULT_SLOT
+  const sizeClass = isBig ? BIG_SLOT_IMG : LARGE_LOGO_SIZES[logo.name] ?? DEFAULT_LOGO_SIZE
 
   return (
     <li className="mr-8 shrink-0" aria-hidden={hidden}>
-      {/* Equal 160×70 slot so every logo has the same visual presence, */}
-      {/* regardless of its native aspect ratio or transparent padding. */}
-      <div className="group/logo flex h-[70px] w-[160px] items-center justify-center">
+      {/* Fixed slot so every logo has the same visual presence, regardless of */}
+      {/* its native aspect ratio. items-center keeps every logo centered even */}
+      {/* when the big-slot rows are taller. */}
+      <div className={`group/logo flex ${slotClass} items-center justify-center`}>
         <img
           src={logo.src}
           alt={logo.name}

@@ -80,26 +80,27 @@ export const NAV: NavItem[] = [
     to: '/about',
     columns: [
       {
-        heading: 'The publishing house',
+        heading: 'About Trueline Publisher',
         items: [
-          { label: 'Who we are', to: '/about#who', note: 'Mission & multidisciplinary focus' },
-          { label: 'Contact editorial', to: '/contact', note: 'Talk to the editorial office' },
+          { label: 'Founder Message', to: '/about#founder-message', note: 'A message from the Founder of Trueline Publisher.' },
+          { label: 'Who We Are', to: '/about#who-we-are', note: 'Learn about our publishing vision and identity.' },
+          { label: 'Mission & Multidisciplinary Focus', to: '/about#mission', note: 'Research excellence across all academic disciplines.' },
         ],
       },
       {
-        heading: 'Standards & integrity',
+        heading: 'Standards & Integrity',
         audience: 'The trust layer',
         items: [
-          { label: 'Editorial standards & peer review', to: '/editorial-standards', note: 'Our most important page' },
-          { label: 'Indexing & abstracting', to: '/indexing', note: 'Honest status + roadmap' },
+          { label: 'Editorial Standards & Peer Review', to: '/editorial-standards' },
+          { label: 'Indexing & Abstracting', to: '/indexing' },
         ],
       },
     ],
     feature: {
-      title: 'The services–editorial firewall',
-      body: 'Paid author services never influence editorial decisions. This single rule is what separates us from predatory publishing.',
-      to: '/editorial-standards#firewall',
-      cta: 'How peer review works',
+      title: 'Integrity-first academic publishing',
+      body: 'Every manuscript follows rigorous editorial standards, ethical peer review, transparent publication policies, and responsible research practices to ensure global academic credibility.',
+      to: '/editorial-standards',
+      cta: 'Learn More',
     },
   },
   {
@@ -474,47 +475,47 @@ export const INSTITUTION_HIGHLIGHTS = [
   {
     id: 'conferences',
     name: 'International Conferences',
-    body: 'Organizing national and international conferences that promote academic collaboration and knowledge exchange.',
+    body: 'Plan national and international conferences with publication and proceedings support.',
   },
   {
     id: 'publications',
     name: 'Research Publications',
-    body: 'Supporting Scopus, Web of Science, peer-reviewed journals, books, conference proceedings, and editorial services.',
+    body: 'Scopus, Web of Science and peer-reviewed publication guidance for researchers.',
   },
   {
     id: 'guidance',
     name: 'Student Research Guidance',
-    body: 'Mentoring undergraduate, postgraduate, and research scholars with project development and publication support.',
+    body: 'Support for UG, PG and PhD research, thesis writing and publications.',
   },
   {
     id: 'faculty',
     name: 'Faculty Development',
-    body: 'Faculty Development Programs (FDPs), AI workshops, research training, and professional skill enhancement.',
+    body: 'Faculty training, AI workshops and research skill development programs.',
   },
   {
     id: 'accreditation',
     name: 'Accreditation & Ranking',
-    body: 'Supporting NAAC, NBA, NIRF, QS documentation, academic quality, and institutional rankings.',
+    body: 'Support for NAAC, NBA, NIRF and institutional quality documentation.',
   },
   {
     id: 'innovation',
     name: 'Innovation & IPR',
-    body: 'Patents, copyrights, trademarks, technology transfer, and innovation ecosystem development.',
+    body: 'Patent, copyright, trademark and innovation ecosystem support.',
   },
   {
     id: 'excellence',
     name: 'Centre of Excellence',
-    body: 'Planning and establishing multidisciplinary Centres of Excellence aligned with industry and research.',
+    body: 'Build multidisciplinary Centres of Excellence for research and innovation.',
   },
   {
     id: 'impact',
     name: 'Research Impact',
-    body: 'Improving research visibility through ethical publishing, indexing guidance, citations, and global collaborations.',
+    body: 'Improve research visibility through indexing, citations and global reach.',
   },
   {
     id: 'industry',
     name: 'Industry Collaboration',
-    body: 'Building partnerships between academia and industry through consultancy, internships, innovation projects, research initiatives, and technology transfer.',
+    body: 'Connect academia with industry through consultancy and research partnerships.',
   },
 ]
 
@@ -537,42 +538,26 @@ export const FUNNELS = [
 ]
 
 // ── Footer ──────────────────────────────────────────────────────────────────
-export const FOOTER_COLS = [
-  {
-    heading: 'Publish',
-    links: [
-      { label: 'Journals', to: '/journals' },
-      { label: 'Submit a manuscript', to: '/submit' },
-      { label: 'Books & Proceedings', to: '/books' },
-      { label: 'Author Services', to: '/author-services' },
-    ],
-  },
-  {
-    heading: 'Trueline Group',
-    links: [
-      { label: 'Trueline Research', to: '/about#group' },
-      { label: 'Trueline Publisher', to: '/' },
-      { label: 'StartNet', to: '/about#group' },
-      { label: 'Trueline Spectrum', to: '/spectrum' },
-    ],
-  },
-  {
-    heading: 'Standards',
-    links: [
-      { label: 'Editorial standards', to: '/editorial-standards' },
-      { label: 'Indexing & abstracting', to: '/indexing' },
-      { label: 'Open access & archiving', to: '/resources#archiving' },
-    ],
-  },
-  {
-    heading: 'Help',
-    links: [
-      { label: 'Author resources', to: '/resources#authors' },
-      { label: 'Reviewer guidelines', to: '/resources#reviewers' },
-      { label: 'FAQ', to: '/resources#faq' },
-      { label: 'Contact', to: '/contact' },
-    ],
-  },
+// Footer link columns. Internal routes render as React Router <Link>; the
+// "Trueline Group" column links out to the sister sites in GROUP_LINKS (opened
+// in a new tab). The "Our Services" column is built from
+// AUTHOR_SERVICE_CATEGORIES in Footer.tsx so it stays in sync with the pages.
+export type FooterLink = { label: string; to: string }
+
+export const FOOTER_USEFUL_LINKS: FooterLink[] = [
+  { label: 'Home', to: '/' },
+  { label: 'About', to: '/about' },
+  { label: 'Founder Message', to: '/about#founder-message' },
+  { label: 'Our Services', to: '/author-services' },
+  { label: 'For Institutions', to: '/institutions' },
+  { label: 'Books & Proceedings', to: '/books' },
+  { label: 'Trueline Group', to: '/about#who-we-are' },
+  { label: 'Contact', to: '/contact' },
+]
+
+export const FOOTER_STANDARDS: FooterLink[] = [
+  { label: 'Editorial Standards', to: '/editorial-standards' },
+  { label: 'Indexing & Abstracting', to: '/indexing' },
 ]
 
 // ── Contact forms (Submit Manuscript & Request a Quote kept separate) ───────

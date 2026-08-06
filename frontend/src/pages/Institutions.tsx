@@ -1,7 +1,35 @@
-import { Check } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import type { LucideIcon } from 'lucide-react'
+import {
+  Check,
+  ArrowRight,
+  Globe,
+  BookOpen,
+  GraduationCap,
+  Presentation,
+  Award,
+  Lightbulb,
+  Building2,
+  TrendingUp,
+  Handshake,
+} from 'lucide-react'
 import { Container, Reveal, SectionHead } from '../lib/ui'
 import PageHero from '../components/PageHero'
 import { INSTITUTION_TRACKS, INSTITUTION_HIGHLIGHTS } from '../lib/content'
+import { INSTITUTION_HIGHLIGHT_BY_ID } from '../lib/institutionHighlights'
+
+// Card icon per highlight, keyed by id (matches INSTITUTION_HIGHLIGHTS).
+const HIGHLIGHT_ICONS: Record<string, LucideIcon> = {
+  conferences: Globe,
+  publications: BookOpen,
+  guidance: GraduationCap,
+  faculty: Presentation,
+  accreditation: Award,
+  innovation: Lightbulb,
+  excellence: Building2,
+  impact: TrendingUp,
+  industry: Handshake,
+}
 
 export default function Institutions() {
   return (
@@ -54,17 +82,28 @@ export default function Institutions() {
             intro="Comprehensive solutions that empower universities, colleges, and academic institutions to strengthen research, innovation, and academic excellence."
           />
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {INSTITUTION_HIGHLIGHTS.map((h, i) => (
-              <Reveal key={h.id} delay={i * 0.06}>
-                <div className="flex h-full flex-col rounded-3xl border border-line bg-white p-7 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-lg">
-                  <h3 className="flex items-baseline gap-3 font-display text-lg font-semibold text-ink">
-                    <span className="text-sm font-semibold tracking-widest text-brand-500">0{i + 1}</span>
-                    {h.name}
-                  </h3>
-                  <p className="mt-2 flex-1 text-[14px] leading-relaxed text-ink-soft">{h.body}</p>
-                </div>
-              </Reveal>
-            ))}
+            {INSTITUTION_HIGHLIGHTS.map((h, i) => {
+              const Icon = HIGHLIGHT_ICONS[h.id]
+              return (
+                <Reveal key={h.id} delay={(i % 3) * 0.05} className="h-full">
+                  <Link
+                    to={INSTITUTION_HIGHLIGHT_BY_ID[h.id].route}
+                    className="group flex h-full flex-col rounded-3xl border border-line bg-white p-7 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-lg"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-line bg-canvas text-brand-500">
+                        <Icon className="h-6 w-6" />
+                      </span>
+                      <h3 className="font-display text-lg font-bold text-ink">{h.name}</h3>
+                    </div>
+                    <p className="mt-4 flex-1 text-[14px] leading-relaxed text-ink-soft">{h.body}</p>
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
+                      Explore Solutions <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </Link>
+                </Reveal>
+              )
+            })}
           </div>
         </Container>
       </section>

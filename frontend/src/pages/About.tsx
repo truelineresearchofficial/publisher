@@ -61,7 +61,7 @@ export default function About() {
       />
 
       {/* CEO Message */}
-      <section id="ceo-message" className="scroll-mt-28 bg-canvas py-20 sm:py-24">
+      <section id="founder-message" className="scroll-mt-28 bg-canvas py-20 sm:py-24">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-12">
             <Reveal className="lg:col-span-5">
@@ -154,13 +154,13 @@ export default function About() {
       </section>
 
       {/* Who we are */}
-      <section id="who" className="scroll-mt-28 bg-paper py-20 sm:py-24">
+      <section id="who-we-are" className="scroll-mt-28 bg-paper py-20 sm:py-24">
         <Container>
           <div className="grid gap-12 lg:grid-cols-12">
             <Reveal className="lg:col-span-5">
               <SectionHead eyebrow="Who we are" title="The narrowed, focused publishing arm of the Trueline Group." />
             </Reveal>
-            <div className="lg:col-span-7">
+            <div id="mission" className="scroll-mt-28 lg:col-span-7">
               <div className="prose-tl max-w-2xl">
                 <p>
                   Trueline Publisher is the multidisciplinary academic publishing house of the Trueline Group,

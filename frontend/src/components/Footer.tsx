@@ -1,85 +1,143 @@
 import { Link } from 'react-router-dom'
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
+import { Facebook, Instagram, Linkedin } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { Wordmark } from './Marks'
-import { BRAND, FOOTER_COLS, JOURNAL } from '../lib/content'
+import {
+  BRAND,
+  FOOTER_USEFUL_LINKS,
+  GROUP_LINKS,
+} from '../lib/content'
+import { AUTHOR_SERVICE_CATEGORIES } from '../lib/authorServices'
 
+// Order per brief: LinkedIn, Instagram, Facebook.
 const SOCIAL_LINKS: { name: string; url: string; icon: LucideIcon }[] = [
   { name: 'LinkedIn', url: 'https://www.linkedin.com/company/99148180/', icon: Linkedin },
   { name: 'Instagram', url: 'https://www.instagram.com/trueline_publisher_?igsh=OXRrbWNmY3czcjcw', icon: Instagram },
   { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61554873172249', icon: Facebook },
 ]
 
+// Our Services column — mirrors the seven author-service category pages.
+const SERVICE_LINKS = AUTHOR_SERVICE_CATEGORIES.map((c) => ({ label: c.title, to: c.route }))
+
+const linkClass = 'text-sm text-white/85 transition-colors hover:text-[#00A99D]'
+const headingClass = 'font-display text-sm font-semibold text-white'
+
+// Strip everything but digits and a leading + so tel: links dial correctly.
+const telHref = (phone: string) => `tel:${phone.replace(/[^\d+]/g, '')}`
+
 export default function Footer() {
   return (
     <footer className="border-t border-line bg-[#002C71] text-white/85">
-      <div className="container-tl py-16">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-4">
+      <div className="container-tl py-9">
+        <div className="grid gap-x-8 gap-y-8 lg:grid-cols-12">
+          {/* Left: logo + description + centered social icons */}
+          <div className="flex flex-col items-center text-center lg:col-span-3 lg:items-start lg:text-left">
+            {/* Same asset and size as the header logo; white tone so it reads on the dark blue. */}
             <Wordmark tone="white" />
-            <p className="mt-5 max-w-xs text-[15px] leading-relaxed text-white/85">
-              {BRAND.tagline} The multidisciplinary academic publishing house of the Trueline Group —
-              peer review, ethics and indexing transparency first.
+            <p className="mt-3 text-[15px] font-semibold leading-relaxed text-white">
+              {BRAND.tagline}
             </p>
-            <div className="mt-6 space-y-2.5 text-sm text-white/85">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="mt-1 h-4 w-4 shrink-0 text-white" /> 
-                <span className="max-w-[260px] leading-relaxed">{BRAND.hq}</span>
-              </div>
-              <a href={`mailto:${BRAND.email}`} className="flex items-center gap-2.5 hover:text-[#7DD3FC]">
-                <Mail className="h-4 w-4 shrink-0 text-white" /> {BRAND.email}
-              </a>
-              {BRAND.phone1 && (
-                <a href={`tel:${BRAND.phone1.replace(/\D/g,'')}`} className="flex items-center gap-2.5 hover:text-[#7DD3FC]">
-                  <Phone className="h-4 w-4 shrink-0 text-white" /> {BRAND.phone1}
-                </a>
-              )}
-              {BRAND.phone2 && (
-                <a href={`tel:${BRAND.phone2.replace(/\D/g,'')}`} className="flex items-center gap-2.5 hover:text-[#7DD3FC]">
-                  <Phone className="h-4 w-4 shrink-0 text-white" /> {BRAND.phone2}
-                </a>
-              )}
-            </div>
+            <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/80">
+              The multidisciplinary academic publishing house of the Trueline Group — peer review,
+              ethics, and indexing transparency first.
+            </p>
 
-            <div className="mt-8">
-              <h4 className="font-display text-sm font-semibold text-white">Follow Us</h4>
-              <div className="mt-4 flex flex-wrap gap-3">
-                {SOCIAL_LINKS.map((s) => (
-                  <a
-                    key={s.name}
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.name}
-                    className="grid h-12 w-12 place-items-center rounded-full bg-brand-500 text-white shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-1 hover:scale-105 hover:bg-brand-600 hover:shadow-xl"
-                  >
-                    <s.icon className="h-5 w-5" />
-                  </a>
-                ))}
-              </div>
+            <div className="mt-5 flex justify-center gap-3">
+              {SOCIAL_LINKS.map((s) => (
+                <a
+                  key={s.name}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.name}
+                  className="grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#00A99D]"
+                >
+                  <s.icon className="h-[18px] w-[18px]" />
+                </a>
+              ))}
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-8">
-            {FOOTER_COLS.map((col) => (
-              <div key={col.heading}>
-                <h4 className="font-display text-sm font-semibold text-white">{col.heading}</h4>
-                <ul className="mt-4 space-y-2.5">
-                  {col.links.map((l) => (
-                    <li key={l.label}>
-                      <Link to={l.to} className="text-sm text-white transition-colors hover:text-[#7DD3FC]">
-                        {l.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          {/* Right: link columns + address, evenly spaced */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:col-span-9 lg:grid-cols-4">
+            {/* Column 1 — Useful Links */}
+            <div>
+              <h4 className={headingClass}>Quick Links</h4>
+              <ul className="mt-4 space-y-2.5">
+                {FOOTER_USEFUL_LINKS.map((l) => (
+                  <li key={l.label}>
+                    <Link to={l.to} className={linkClass}>
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 2 — Our Services */}
+            <div>
+              <h4 className={headingClass}>Our Services</h4>
+              <ul className="mt-4 space-y-2.5">
+                {SERVICE_LINKS.map((l) => (
+                  <li key={l.label}>
+                    <Link to={l.to} className={linkClass}>
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 3 — Trueline Group (external sister sites) */}
+            <div>
+              <h4 className={headingClass}>Trueline Group</h4>
+              <ul className="mt-4 space-y-2.5">
+                {GROUP_LINKS.map((l) => (
+                  <li key={l.label}>
+                    <a
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={linkClass}
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Right column — Address */}
+            <div>
+              <h4 className={headingClass}>Address</h4>
+              <address className="mt-4 space-y-3 not-italic text-sm leading-relaxed text-white/80">
+                <p>
+                  Building No. 7/232-19, 
+                  Devi Towers,
+                  Kalipatti Privu Road, 
+                  Vaikuntham, Sankari,
+                  <br />
+                  Salem, Tamil Nadu – 637103.
+               </p>
+                <div className="space-y-2">
+                  <a href={`mailto:${BRAND.email}`} className="block break-words hover:text-[#00A99D]">
+                    {BRAND.email}
+                  </a>
+                  <a href={telHref(BRAND.phone1)} className="block hover:text-[#00A99D]">
+                    {BRAND.phone1}
+                  </a>
+                  <a href={telHref(BRAND.phone2)} className="block hover:text-[#00A99D]">
+                    {BRAND.phone2}
+                  </a>
+                </div>
+              </address>
+            </div>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-4 border-t border-white/[0.12] pt-7 text-[13px] text-white/85 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Trueline Publisher · {BRAND.group}. All rights reserved.</p>
+        {/* Bottom copyright bar — centered */}
+        <div className="mt-7 border-t border-white/[0.12] pt-5 text-center text-[13px] text-white/80">
+          © {new Date().getFullYear()} Trueline Publisher. All rights reserved.
         </div>
       </div>
     </footer>

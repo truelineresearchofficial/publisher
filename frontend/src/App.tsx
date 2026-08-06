@@ -11,6 +11,8 @@ import AuthorServices from './pages/AuthorServices'
 import ServiceCategoryPage from './components/ServiceCategoryPage'
 import { AUTHOR_SERVICE_CATEGORIES } from './lib/authorServices'
 import Institutions from './pages/Institutions'
+import InstitutionHighlightPage from './pages/InstitutionHighlightPage'
+import { INSTITUTION_HIGHLIGHTS_DETAIL } from './lib/institutionHighlights'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 
@@ -47,6 +49,9 @@ export default function App() {
             <Route key={c.slug} path={c.route} element={<ServiceCategoryPage category={c} />} />
           ))}
           <Route path="/institutions" element={<Institutions />} />
+          {INSTITUTION_HIGHLIGHTS_DETAIL.map((h) => (
+            <Route key={h.slug} path={h.route} element={<InstitutionHighlightPage highlight={h} />} />
+          ))}
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

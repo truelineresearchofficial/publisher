@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Quote } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Container, Reveal, SectionHead } from '../lib/ui'
 import { JournalMark, HelixLines } from '../components/Marks'
 import Flywheel from '../components/Flywheel'
@@ -113,13 +113,6 @@ function ServicesTeaser() {
               <Link to="/contact#quote" className="btn-ghost h-11 px-6">
                 Request a quote
               </Link>
-            </div>
-            <div className="mt-6 flex items-start gap-2.5 rounded-2xl border border-line bg-canvas px-5 py-4">
-              <Quote className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
-              <p className="text-[13.5px] leading-relaxed text-ink-soft">
-                Buying a service never changes whether a manuscript is reviewed or accepted. You can publish with us
-                without buying anything at all.
-              </p>
             </div>
           </Reveal>
           <div className="lg:col-span-7">
