@@ -25,7 +25,7 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-canvas pt-[80px]">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-70" />
-      <div className="pointer-events-none absolute -right-16 top-12 hidden w-[396px] opacity-[0.55] sm:block">
+      <div className="pointer-events-none absolute right-4 top-12 hidden w-[456px] opacity-[0.55] sm:block">
         <JournalMark className="h-full w-full animate-float" />
       </div>
       <div className="pointer-events-none absolute right-[12%] top-24 hidden h-[440px] w-[180px] opacity-40 xl:block">

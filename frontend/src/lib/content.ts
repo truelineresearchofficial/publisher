@@ -147,7 +147,7 @@ export const GROUP_LINKS: { label: string; href: string }[] = [
   { label: 'Trueline Research', href: 'https://truelineresearch.in/' },
   { label: 'Trueline Publisher', href: 'https://truelinepublisher.in/' },
   { label: 'Trueline Spectrum', href: 'https://www.truelinespectrum.in/' },
-  { label: 'Jaeid Journals', href: 'https://www.jaeid.com/' },
+  { label: 'Jaeid Journal', href: 'https://www.jaeid.com/' },
   { label: 'StartNet Ventures', href: 'https://startnetx.in/' },
 ]
 
@@ -285,7 +285,7 @@ export const GROUP = [
   },
   {
     id: 'jaeid Journals',
-    name: 'Jaeid Journals',
+    name: 'Jaeid Journal',
     short: 'Publishes',
     role: 'Peer-Reviewed Journal',
     body: 'Publishing high-quality original research, reviews, and case studies across AI, biomedical sciences, life sciences, engineering, technology, and multidisciplinary research through a rigorous peer-review process.',

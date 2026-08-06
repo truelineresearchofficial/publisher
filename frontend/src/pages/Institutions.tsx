@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import { Container, Reveal, SectionHead } from '../lib/ui'
 import PageHero from '../components/PageHero'
+import { CentreMark } from '../components/HeroMarks'
 import { INSTITUTION_TRACKS, INSTITUTION_HIGHLIGHTS } from '../lib/content'
 import { INSTITUTION_HIGHLIGHT_BY_ID } from '../lib/institutionHighlights'
 
@@ -40,6 +41,7 @@ export default function Institutions() {
         title="Publish at indexing-ready, integrity-first standards."
         intro="Institutional publishing, proceedings and editorial partnerships — for colleges, universities and academic institutions building research-publishing capability."
         cta={{ label: 'Talk to us', to: '/contact#institution' }}
+        art={CentreMark}
       />
 
       <section id="overview" className="scroll-mt-28 bg-paper py-20 sm:py-24">

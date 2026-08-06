@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, BookOpen, CalendarDays, Library, Barcode } from 'lucide-react'
 import { Container, Reveal, SectionHead } from '../lib/ui'
 import PageHero from '../components/PageHero'
+import { BooksMark } from '../components/HeroMarks'
 import { BOOKS } from '../lib/content'
 
 const ICONS = [BookOpen, CalendarDays, Library, Barcode]
@@ -14,6 +15,7 @@ export default function Books() {
         title="Scholarly books and conference proceedings."
         intro="Peer-reviewed edited volumes, monographs and proceedings across all academic disciplines — with ISBN registration, chapter-level DOIs and distribution to academic channels."
         cta={{ label: 'Propose a book or proceedings', to: '/contact#institution' }}
+        art={BooksMark}
       />
 
       <section className="bg-paper py-20 sm:py-24">

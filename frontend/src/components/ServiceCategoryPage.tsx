@@ -1,10 +1,31 @@
 import { useEffect, useState } from 'react'
+import type { ComponentType } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { ArrowRight, ArrowLeft, Check } from 'lucide-react'
 import { Container, Reveal, Eyebrow, Pill } from '../lib/ui'
 import PageHero from './PageHero'
+import {
+  BooksMark,
+  ResearchMark,
+  EditingMark,
+  DataMark,
+  SubmissionMark,
+  ConferenceMark,
+  ReportMark,
+} from './HeroMarks'
 import type { ServiceCategory } from '../lib/authorServices'
+
+// Topic-specific hero illustration per service category (by slug).
+const SERVICE_ART: Record<string, ComponentType<{ className?: string }>> = {
+  'book-publication': BooksMark,
+  'research-development': ResearchMark,
+  'manuscript-editing': EditingMark,
+  'simulation-data-analysis': DataMark,
+  'publication-support': SubmissionMark,
+  'conference-organization': ConferenceMark,
+  'industry-reports': ReportMark,
+}
 
 /**
  * Shared layout for every dedicated Author Services category page.
@@ -34,6 +55,7 @@ export default function ServiceCategoryPage({ category }: { category: ServiceCat
         title={category.title}
         intro={category.blurb}
         cta={{ label: 'All author services', to: '/author-services' }}
+        art={SERVICE_ART[category.slug]}
       />
 
       <section className="scroll-mt-28 bg-paper py-16 sm:py-20">

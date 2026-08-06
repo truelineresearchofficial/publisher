@@ -1,8 +1,33 @@
+import type { ComponentType } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowLeft, Check } from 'lucide-react'
 import { Container, Reveal, SectionHead } from '../lib/ui'
 import PageHero from '../components/PageHero'
+import {
+  ConferenceMark,
+  JournalsMark,
+  GuidanceMark,
+  FacultyMark,
+  AwardMark,
+  InnovationMark,
+  CentreMark,
+  ImpactMark,
+  CollaborationMark,
+} from '../components/HeroMarks'
 import type { InstitutionHighlight } from '../lib/institutionHighlights'
+
+// Topic-specific hero illustration per highlight (by id).
+const HIGHLIGHT_ART: Record<string, ComponentType<{ className?: string }>> = {
+  conferences: ConferenceMark,
+  publications: JournalsMark,
+  guidance: GuidanceMark,
+  faculty: FacultyMark,
+  accreditation: AwardMark,
+  innovation: InnovationMark,
+  excellence: CentreMark,
+  impact: ImpactMark,
+  industry: CollaborationMark,
+}
 
 /**
  * Shared layout for every dedicated Institutional Highlight page.
@@ -22,6 +47,7 @@ export default function InstitutionHighlightPage({ highlight }: { highlight: Ins
         title={highlight.title}
         intro={highlight.intro}
         cta={{ label: 'Talk to us', to: '/contact#institution' }}
+        art={HIGHLIGHT_ART[highlight.id]}
       />
 
       {/* ── Overview ── */}

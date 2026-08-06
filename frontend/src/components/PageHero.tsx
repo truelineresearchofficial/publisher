@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { ComponentType, ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { Container, Reveal, Eyebrow } from '../lib/ui'
@@ -11,6 +11,7 @@ export default function PageHero({
   audience,
   cta,
   children,
+  art: Art = JournalMark,
 }: {
   eyebrow?: string
   title: ReactNode
@@ -18,12 +19,14 @@ export default function PageHero({
   audience?: string
   cta?: { label: string; to: string }
   children?: ReactNode
+  /** Hero illustration; defaults to the open-journal mark. */
+  art?: ComponentType<{ className?: string }>
 }) {
   return (
     <section className="relative overflow-hidden border-b border-line bg-canvas pt-[96px]">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-60" />
-      <div className="pointer-events-none absolute -right-16 top-12 hidden w-[440px] opacity-[0.55] sm:block">
-        <JournalMark className="h-full w-full animate-float" />
+      <div className="pointer-events-none absolute right-0 top-1/2 hidden w-[506px] -translate-y-1/2 opacity-[0.55] sm:block">
+        <Art className="h-full w-full animate-float" />
       </div>
       <Container className="relative pb-16 pt-4">
         <div className="max-w-3xl">

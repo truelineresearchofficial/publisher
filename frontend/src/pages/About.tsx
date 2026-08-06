@@ -4,6 +4,7 @@ import { useInView, useReducedMotion } from 'framer-motion'
 import { ArrowRight, ShieldCheck, Scale, Eye, Users, Linkedin, Instagram, Facebook, MessageCircle, Phone, BookOpen, Presentation, FileText, Building2, GraduationCap } from 'lucide-react'
 import { Container, Reveal, SectionHead } from '../lib/ui'
 import PageHero from '../components/PageHero'
+import { PublishingMark } from '../components/HeroMarks'
 import { PILLARS } from '../lib/content'
 
 /** Count from 0 to `value` once the number scrolls into view; honors reduced-motion. */
@@ -58,6 +59,7 @@ export default function About() {
         title="A trust-led, multidisciplinary academic publisher."
         intro="We exist to convert research output into credibility. We lead with editorial standards, indexing transparency, peer-review integrity and credible people — because that is what lets institutions and authors trust what we publish."
         cta={{ label: 'Read our editorial standards', to: '/editorial-standards' }}
+        art={PublishingMark}
       />
 
       {/* CEO Message */}
