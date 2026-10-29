@@ -1,0 +1,44 @@
+# Deployed by Coolify on trueline (main = production, dev = staging).
+# Domains, TLS and environment variables are managed in Coolify; Coolify
+# injects its env into every service. docker-compose.yml is the old
+# self-managed setup (host nginx + published ports).
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE: /api
+    restart: unless-stopped
+    mem_limit: 256m
+    depends_on:
+      - api
+
+  api:
+    build: ./backend
+    restart: unless-stopped
+    mem_limit: 512m
+    volumes:
+      # OAuth token JSON lives on the host, mounted read-only (never in the image)
+      - /data/trueline/secrets:/run/secrets:ro
+    labels:
+      # same 1 MB request body cap the old nginx enforced (client_max_body_size 1m)
+      - traefik.http.middlewares.tl-body.buffering.maxRequestBodyBytes=1048576
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    mem_limit: 512m
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
